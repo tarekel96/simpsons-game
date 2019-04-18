@@ -6,66 +6,127 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.randomizeOrder = this.randomizeOrder.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.incrementScore = this.incrementScore.bind(this);
-    this.updateTopScore = this.updateTopScore.bind(this);
-    this.resetScore = this.resetScore.bind(this);
     this.state = {
-      array: this.randomizeOrder(simpsonImages),
+      // array: this.randomizeOrder(simpsonImages),
       score: 0,
-      topScore: 0
+      topScore: 0,
+      restart: false,
+      array: [
+        {
+          hash: "images/Homer.png",
+          id: "Homer",
+          picked: false
+        },
+        {
+          hash: "images/Marge.png",
+          id: "Marge",
+          picked: false
+        },
+        {
+          hash: "images/Lisa.png",
+          id: "Lisa",
+          picked: false
+        },
+        {
+          hash: "images/Bart.png",
+          id: "Bart",
+          picked: false
+        },
+        {
+          hash: "images/Grandpa.png",
+          id: "Grandpa",
+          picked: false
+        },
+        {
+          hash: "images/Barney.png",
+          id: "Barney",
+          picked: false
+        },
+        {
+          hash: "images/Mo.png",
+          id: "Mo",
+          picked: false
+        },
+        {
+          hash: "images/Krusty.png",
+          id: "Krusty",
+          picked: false
+        },
+        {
+          hash: "images/Ned.png",
+          id: "Ned",
+          picked: false
+        },
+        {
+          hash: "images/Edna.png",
+          id: "Edna",
+          picked: false
+        },
+        {
+          hash: "images/Skinner.png",
+          id: "Skinner",
+          picked: false
+        },
+        {
+          hash: "images/Waylon.png",
+          id: "Waylon",
+          picked: false
+        }
+      ]
     };
   }
 
-  // onClick={() => {
-  //   this.setState({
-  //     picked: this.state.picked.push(this.state.array[0]),
-  //     score: this.state.score + 1,
-  //     topScore: this.state.topScore + 1
-  //   });
-  //   console.log(this.state.picked);
-  // }}
-
-  randomizeOrder(array) {
+  randomizeOrder = array => {
     array.sort(() => Math.random() - 0.5);
     return array;
-  }
+  };
 
-  handleClick(object) {
-    if (this.state.picked.find(obj => obj.id === object.id)) {
-      console.log("game over");
-    } else {
-      this.setState(prevState => {
-        prevState.picked.push(object);
-        console.log(prevState);
-      });
-    }
-  }
-
-  updateTopScore(currentScore) {
+  updateTopScore = currentScore => {
     currentScore =
       currentScore >= this.state.topScore
         ? this.setState(prevState => {
             return { topScore: prevState.score };
           })
         : currentScore;
-  }
+  };
 
-  resetScore() {
-    this.setState({
-      score: 0
-    });
-  }
+  resetScore = () => {
+    this.setState(
+      {
+        score: 0
+      },
+      this.state.array.forEach(char => char.picked === true)
+    );
+  };
 
-  incrementScore() {
-    this.setState(prevState => {
-      return {
-        score: prevState.score + 1
-      };
-    });
-    console.log(this.state.score);
-  }
+  makeTrue = thumbnail => {
+    if (!thumbnail) {
+      this.setState({
+        thumbnail: true
+      });
+    }
+  };
+
+  incrementScore = id => {
+    // console.log(id);
+    this.setState(prevState => ({
+      array: prevState.array.map(char =>
+        char.id === id ? Object.assign(char, { picked: true }) : char
+      ),
+      score: prevState.score + 1
+    }));
+
+    if (this.state.array.find(char => (char.id === id ? char.picked : null))) {
+      this.resetScore();
+    }
+
+    // this.state.array.find(char =>
+    //   char.id === id ? Object.assign(char, { picked: true }) : char
+    // );
+    // this.setState({
+    //   score: this.state.score + 1
+    // });
+  };
 
   render() {
     return (
@@ -78,12 +139,14 @@ class App extends Component {
           <h2>Top Score: {this.state.topScore}</h2>
         </section>
         <Container bootstrap="text-warning d-flex row justify-content-center mt-3 container mx-auto">
-          {this.state.array.map(character => (
+          {this.randomizeOrder(this.state.array).map(character => (
             <Thumbnail
               bootstrap="pt-4 px-4"
               key={character.id}
+              id={character.id}
               imageSrc={character.hash}
               alt={character.id}
+              picked={character.picked}
               incrementScore={this.incrementScore}
               updateTopScore={this.updateTopScore}
               score={this.state.score}
@@ -98,55 +161,67 @@ class App extends Component {
   }
 }
 
-let simpsonImages = [
-  {
-    hash: "images/Homer.png",
-    id: "Homer"
-  },
-  {
-    hash: "images/Marge.png",
-    id: "Marge"
-  },
-  {
-    hash: "images/Lisa.png",
-    id: "Lisa"
-  },
-  {
-    hash: "images/Bart.png",
-    id: "Bart"
-  },
-  {
-    hash: "images/Grandpa.png",
-    id: "Grandpa"
-  },
-  {
-    hash: "images/Barney.png",
-    id: "Barney"
-  },
-  {
-    hash: "images/Mo.png",
-    id: "Mo"
-  },
-  {
-    hash: "images/Krusty.png",
-    id: "Krusty"
-  },
-  {
-    hash: "images/Ned.png",
-    id: "Ned"
-  },
-  {
-    hash: "images/Edna.png",
-    id: "Edna"
-  },
-  {
-    hash: "images/Skinner.png",
-    id: "Skinner"
-  },
-  {
-    hash: "images/Waylon.png",
-    id: "Waylon"
-  }
-];
+// let simpsonImages = [
+//   {
+//     hash: "images/Homer.png",
+//     id: "Homer",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Marge.png",
+//     id: "Marge",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Lisa.png",
+//     id: "Lisa",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Bart.png",
+//     id: "Bart",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Grandpa.png",
+//     id: "Grandpa",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Barney.png",
+//     id: "Barney",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Mo.png",
+//     id: "Mo",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Krusty.png",
+//     id: "Krusty",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Ned.png",
+//     id: "Ned",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Edna.png",
+//     id: "Edna",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Skinner.png",
+//     id: "Skinner",
+//     picked: false
+//   },
+//   {
+//     hash: "images/Waylon.png",
+//     id: "Waylon",
+//     picked: false
+//   }
+// ];
 
 export default App;
