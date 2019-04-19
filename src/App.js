@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Thumbnail from "./components/Thumbnail/index.js";
 import Container from "./components/Container/index.js";
 import ModalCom from "./components/Modal/index.js";
+import Footer from "./components/Footer/index.js";
 import "./App.css";
 
 class App extends Component {
@@ -178,6 +179,7 @@ class App extends Component {
             closeModal={this.closeModal}
           />
         </Container>
+        <Footer />
       </div>
     );
   }
