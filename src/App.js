@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Thumbnail from "./components/Thumbnail/index.js";
 import Container from "./components/Container/index.js";
+import ModalCom from "./components/Modal/index.js";
 import "./App.css";
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
     this.state = {
       score: 0,
       topScore: 0,
-      restart: false,
+      modal: false,
       array: [
         {
           hash: "images/Homer.png",
@@ -90,6 +91,18 @@ class App extends Component {
     };
   }
 
+  closeModal = () => {
+    this.setState({
+      modal: false
+    });
+  };
+
+  openModal = () => {
+    this.setState({
+      modal: true
+    });
+  };
+
   randomizeOrder = array => {
     array.sort(() => Math.random() - 0.5);
     return array;
@@ -111,6 +124,7 @@ class App extends Component {
         char.picked === true ? Object.assign(char, { picked: false }) : char
       )
     }));
+    this.openModal();
   };
 
   compareScore = () => {
@@ -157,6 +171,12 @@ class App extends Component {
               incrementScore={this.incrementScore}
             />
           ))}
+          <ModalCom
+            modal={this.state.modal}
+            score={this.state.score}
+            topScore={this.state.topScore}
+            closeModal={this.closeModal}
+          />
         </Container>
       </div>
     );

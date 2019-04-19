@@ -1,10 +1,7 @@
 import React, { Component } from "react";
+import Proptypes from "prop-types";
 
 class Thumbnail extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     return (
       <div className={this.props.bootstrap}>
@@ -20,5 +17,12 @@ class Thumbnail extends Component {
     );
   }
 }
+
+Thumbnail.propTypes = {
+  id: Proptypes.string.isRequired,
+  imageSrc: Proptypes.string.isRequired,
+  alt: Proptypes.string.isRequired,
+  incrementScore: Proptypes.func
+};
 
 export default Thumbnail;
