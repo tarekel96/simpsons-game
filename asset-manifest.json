@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/simpsons-game/static/css/main.5c18562f.chunk.css",
+    "main.js": "/simpsons-game/static/js/main.5af4a244.chunk.js",
+    "main.js.map": "/simpsons-game/static/js/main.5af4a244.chunk.js.map",
+    "runtime~main.js": "/simpsons-game/static/js/runtime~main.19df999e.js",
+    "runtime~main.js.map": "/simpsons-game/static/js/runtime~main.19df999e.js.map",
+    "static/js/2.f5ae0110.chunk.js": "/simpsons-game/static/js/2.f5ae0110.chunk.js",
+    "static/js/2.f5ae0110.chunk.js.map": "/simpsons-game/static/js/2.f5ae0110.chunk.js.map",
+    "index.html": "/simpsons-game/index.html",
+    "precache-manifest.e160eaec6463f8b50acfc0ee42274e13.js": "/simpsons-game/precache-manifest.e160eaec6463f8b50acfc0ee42274e13.js",
+    "service-worker.js": "/simpsons-game/service-worker.js",
+    "static/css/main.5c18562f.chunk.css.map": "/simpsons-game/static/css/main.5c18562f.chunk.css.map"
+  }
+}

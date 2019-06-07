@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACE,gBAAiB,CACjB,sBACF,CAKA,QACE,WAAY,CACZ,YACF","file":"main.5c18562f.chunk.css","sourcesContent":[".App {\n  min-height: 100vh;\n  justify-content: center;\n}\n\n.App-header {\n}\n\ndiv img {\n  width: 127px;\n  height: 193px;\n}\n"]}
