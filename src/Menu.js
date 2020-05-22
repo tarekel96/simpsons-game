@@ -20,7 +20,7 @@ const Main = () => {
           <Link to="/game">Game</Link>
         </p>
         <p>
-          <Link>Top Scores</Link>
+          <Link>Leaderboards</Link>
         </p>
       </section>
     </div>

@@ -11,7 +11,7 @@ import styles from "./thumbnail.module.scss";
 const Thumbnail = ({ bootstrap, id, imageSrc, alt, incrementScore }) => {
   return (
     <div className={bootstrap}>
-      <button>
+      <button className={styles.thumbnailContainer}>
         <img
           className={styles.thumbnail}
           id={id}

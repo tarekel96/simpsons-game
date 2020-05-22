@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "./components/Button/Button";
 import styles from "./styles/Form.module.scss";
 
 const Form = () => {
@@ -6,14 +7,15 @@ const Form = () => {
   return (
     <>
       <p>Would You Like to Submit Your Score?</p>
-      <button
-        className={`btn-success ${styles.confirmBtn}`}
+      <Button
+        bootstrap={`btn-success`}
+        customStyle={`${styles.confirmBtn}`}
         onClick={() => {
           showForm(true);
         }}
       >
         Heck Yeah!
-      </button>
+      </Button>
       {proceedWithForm ? (
         <form>
           <p>Enter your name:</p>

@@ -9,9 +9,6 @@
 .main {
   @extend %text;
   height: 100vh;
-  //   display: grid;
-  //   grid-template-columns: 200px;
-  //   justify-content: center;
 }
 
 .header {
@@ -25,8 +22,6 @@
   width: 50%;
   margin: 4rem auto;
   padding: 2rem 0;
-  //   padding: 2rem 0;
   max-width: 300px;
   box-shadow: 0 4px 8px 0 goldenrod;
-  //max-height: 300px;
 }

@@ -181,7 +181,7 @@ class Game extends Component {
         </header>
         <section className="text-warning text-right pr-5">
           <h2>Score: {this.state.score}</h2>
-          <h2>Leaderboards: {this.state.topScore}</h2>
+          <h2>Topscore: {this.state.topScore}</h2>
         </section>
         <Container bootstrap="text-warning d-flex row justify-content-center mt-3 container mx-auto pb-4">
           {this.randomizeOrder(this.state.array).map((character) => (

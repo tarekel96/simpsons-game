@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Button } from "../Button/Button";
 import Form from "../../Form.js";
 import Fade from "react-reveal/Fade";
 
@@ -31,7 +32,7 @@ const ModalCom = ({ modal = false, score = 0, closeModal, topScore = 0 }) => {
             <Form />
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={closeModal} className="mx-auto">
+            <Button bootstrap="btn-primary mx-auto" onClick={closeModal}>
               Restart
             </Button>
           </ModalFooter>

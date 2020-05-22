@@ -1,3 +1,16 @@
+%roundEdges {
+  border-radius: 5px;
+}
+
+.thumbnailContainer {
+  @extend %roundEdges;
+}
+
+.thumbnail {
+  transition: 0.2s;
+  @extend %roundEdges;
+}
+
 .thumbnail:hover {
   box-shadow: 0 4px 8px 0 goldenrod;
   transform: scale(1.3);
