@@ -3,7 +3,7 @@ import Thumbnail from "./components/Thumbnail/index.js";
 import Container from "./components/Container/index.js";
 import ModalCom from "./components/Modal/index.js";
 import Footer from "./components/Footer/index.js";
-import "./App.css";
+import "./styles/App.scss";
 
 class App extends Component {
   constructor(props) {
@@ -16,135 +16,137 @@ class App extends Component {
         {
           hash: "images/Homer.png",
           id: "Homer",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Marge.png",
           id: "Marge",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Lisa.png",
           id: "Lisa",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Bart.png",
           id: "Bart",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Grandpa.png",
           id: "Grandpa",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Barney.png",
           id: "Barney",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Mo.png",
           id: "Mo",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Krusty.png",
           id: "Krusty",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Ned.png",
           id: "Ned",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Edna.png",
           id: "Edna",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Skinner.png",
           id: "Skinner",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Waylon.png",
           id: "Waylon",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Apu.png",
           id: "Abu",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Milhouse.png",
           id: "Milhouse",
-          picked: false
+          picked: false,
         },
         {
           hash: "images/Burns.png",
           id: "Burns",
-          picked: false
-        }
-      ]
+          picked: false,
+        },
+      ],
     };
   }
 
   closeModal = () => {
     this.setState({
-      modal: false
+      modal: false,
     });
   };
 
   openModal = () => {
     this.setState({
-      modal: true
+      modal: true,
     });
   };
 
-  randomizeOrder = array => {
+  randomizeOrder = (array) => {
     array.sort(() => Math.random() - 0.5);
     return array;
   };
 
-  updateTopScore = currentScore => {
+  updateTopScore = (currentScore) => {
     currentScore =
       currentScore >= this.state.topScore
-        ? this.setState(prevState => {
+        ? this.setState((prevState) => {
             return { topScore: prevState.score };
           })
         : currentScore;
   };
 
   resetScore = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       score: 0,
-      array: prevState.array.map(char =>
+      array: prevState.array.map((char) =>
         char.picked === true ? Object.assign(char, { picked: false }) : char
-      )
+      ),
     }));
     this.openModal();
   };
 
   compareScore = () => {
     if (this.state.score > this.state.topScore) {
-      this.setState(prevState => ({
-        topScore: prevState.topScore + 1
+      this.setState((prevState) => ({
+        topScore: prevState.topScore + 1,
       }));
     }
   };
 
-  incrementScore = id => {
-    this.setState(prevState => ({
-      array: prevState.array.map(char =>
+  incrementScore = (id) => {
+    this.setState((prevState) => ({
+      array: prevState.array.map((char) =>
         char.id === id ? Object.assign(char, { picked: true }) : char
       ),
-      score: prevState.score + 1
+      score: prevState.score + 1,
     }));
 
-    if (this.state.array.find(char => (char.id === id ? char.picked : null))) {
+    if (
+      this.state.array.find((char) => (char.id === id ? char.picked : null))
+    ) {
       this.resetScore();
     }
 
@@ -162,7 +164,7 @@ class App extends Component {
           <h2>Top Score: {this.state.topScore}</h2>
         </section>
         <Container bootstrap="text-warning d-flex row justify-content-center mt-3 container mx-auto pb-4">
-          {this.randomizeOrder(this.state.array).map(character => (
+          {this.randomizeOrder(this.state.array).map((character) => (
             <Thumbnail
               bootstrap="pt-4 px-4"
               key={character.id}

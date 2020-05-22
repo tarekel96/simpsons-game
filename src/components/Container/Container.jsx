@@ -1,15 +1,12 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
-class Container extends Component {
-  render() {
-    return <main className={this.props.bootstrap}>{this.props.children}</main>;
-  }
-}
-
-Container.propTypes = {
-  bootstrap: PropTypes.string.isRequired,
-  children: PropTypes.array.isRequired
+/**
+ * @param {string} bootstrap bootstrap classes
+ * @param {array} children array of Card components
+ * @return a container component
+ */
+const Container = ({ bootstrap, children }) => {
+  return <main className={bootstrap}>{children}</main>;
 };
 
 export default Container;
