@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import Form from "../../Form.js";
 import Fade from "react-reveal/Fade";
 
 /**
@@ -27,6 +28,7 @@ const ModalCom = ({ modal = false, score = 0, closeModal, topScore = 0 }) => {
             <h2>
               Your Score: {score} <span>|</span> Top Score: {topScore}
             </h2>
+            <Form />
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={closeModal} className="mx-auto">

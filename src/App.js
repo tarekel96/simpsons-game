@@ -2,6 +2,7 @@ import React from "react";
 import Game from "./Game.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Menu from "./Menu.js";
+import "./App.scss";
 
 const App = () => {
   return (

@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./thumbnail.module.scss";
 
 /**
  * @param {string} bootstrap the bootstrap class styles
@@ -12,6 +13,7 @@ const Thumbnail = ({ bootstrap, id, imageSrc, alt, incrementScore }) => {
     <div className={bootstrap}>
       <button>
         <img
+          className={styles.thumbnail}
           id={id}
           src={imageSrc}
           alt={alt}

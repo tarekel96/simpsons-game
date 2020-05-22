@@ -1,3 +1,5 @@
-$font: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+// Acme Google font
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+
+$font: "Acme", sans-serif;
 $off-white: white;
