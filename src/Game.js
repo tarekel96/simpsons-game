@@ -4,7 +4,7 @@ import Container from "./components/Container/index.js";
 import ModalCom from "./components/Modal/index.js";
 import Footer from "./components/Footer/index.js";
 import backgroundImage from "./styles/images/springfield-night.jpg";
-import "./styles/Game.module.scss";
+import styles from "./styles/Game.module.scss";
 
 class Game extends Component {
   constructor(props) {
@@ -169,6 +169,7 @@ class Game extends Component {
   render() {
     return (
       <div
+        className={styles.game}
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
