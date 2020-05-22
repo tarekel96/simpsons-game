@@ -1,6 +1,9 @@
+//@import url("./images/Springfield.jpg");
+
 .App {
   min-height: 100vh;
   justify-content: center;
+  background-image: url("./images/Springfield.jpg");
 }
 
 .App-header {
