@@ -3,7 +3,7 @@ import Thumbnail from "./components/Thumbnail/index.js";
 import Container from "./components/Container/index.js";
 import ModalCom from "./components/Modal/index.js";
 import Footer from "./components/Footer/index.js";
-import "./styles/App.scss";
+import "./styles/App.module.scss";
 
 class App extends Component {
   constructor(props) {
@@ -104,11 +104,13 @@ class App extends Component {
     });
   };
 
+  // algorithm that randomly orders array
   randomizeOrder = (array) => {
     array.sort(() => Math.random() - 0.5);
     return array;
   };
 
+  // compares the current score with the top score and updates appropriately
   updateTopScore = (currentScore) => {
     currentScore =
       currentScore >= this.state.topScore
@@ -119,6 +121,8 @@ class App extends Component {
   };
 
   resetScore = () => {
+    // checks if beat the top score before restarting the game
+    this.compareScore();
     this.setState((prevState) => ({
       score: 0,
       array: prevState.array.map((char) =>
@@ -128,29 +132,37 @@ class App extends Component {
     this.openModal();
   };
 
+  // compares the current score with the top score
   compareScore = () => {
     if (this.state.score > this.state.topScore) {
+      let diff = this.state.score - this.state.topScore;
       this.setState((prevState) => ({
-        topScore: prevState.topScore + 1,
+        topScore: prevState.topScore + diff,
       }));
     }
   };
 
+  /**
+   * @param {number} id the id number for a character that was passed by onClick event
+   */
   incrementScore = (id) => {
+    // prevState - current state before incrementing
     this.setState((prevState) => ({
+      // finds the clicked character by id which is passed from the thumbnail component
       array: prevState.array.map((char) =>
+        // once the character is found, its boolean property (picked) is set to true
         char.id === id ? Object.assign(char, { picked: true }) : char
       ),
+      // increments the score without mutations
       score: prevState.score + 1,
     }));
 
+    // resets the score/game if the selected character was already selected
     if (
       this.state.array.find((char) => (char.id === id ? char.picked : null))
     ) {
       this.resetScore();
     }
-
-    this.compareScore();
   };
 
   render() {
@@ -181,7 +193,7 @@ class App extends Component {
             closeModal={this.closeModal}
           />
         </Container>
-        <Footer />
+        <Footer bootstrap="pl-5 pb-3 text-warning" />
       </div>
     );
   }

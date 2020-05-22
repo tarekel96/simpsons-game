@@ -1,6 +1,12 @@
 import React from "react";
-import Proptypes from "prop-types";
 
+/**
+ * @param {string} bootstrap the bootstrap class styles
+ * @param {number} id the id number of the char
+ * @param {string} imageSrc the image url of a thumbnail
+ * @param {string} alt alternate property for image with thumbnail
+ * @param {function} incrementScore function that handles the logic of incrementing the score
+ */
 const Thumbnail = ({ bootstrap, id, imageSrc, alt, incrementScore }) => {
   return (
     <div className={bootstrap}>
@@ -14,13 +20,6 @@ const Thumbnail = ({ bootstrap, id, imageSrc, alt, incrementScore }) => {
       </button>
     </div>
   );
-};
-
-Thumbnail.propTypes = {
-  id: Proptypes.string.isRequired,
-  imageSrc: Proptypes.string.isRequired,
-  alt: Proptypes.string.isRequired,
-  incrementScore: Proptypes.func,
 };
 
 export default Thumbnail;

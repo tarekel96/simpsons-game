@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Fade from "react-reveal/Fade";
 
@@ -8,13 +8,20 @@ import Fade from "react-reveal/Fade";
  * @param { number } score the current score for a player
  * @param { number } topScore saves the top score for a player
  */
-const ModalCom = ({ modal, score, closeModal, topScore }) => {
+const ModalCom = ({ modal = false, score = 0, closeModal, topScore = 0 }) => {
   return (
-    <Fragment>
+    <>
       <Fade clear>
         <Modal isOpen={modal}>
           <ModalHeader className="mx-auto">
-            <h1>Game Over</h1>
+            <p
+              style={{
+                fontSize: "32px",
+                fontWeight: "bold",
+              }}
+            >
+              Game Over
+            </p>
           </ModalHeader>
           <ModalBody className="mx-auto">
             <h2>
@@ -28,7 +35,7 @@ const ModalCom = ({ modal, score, closeModal, topScore }) => {
           </ModalFooter>
         </Modal>
       </Fade>
-    </Fragment>
+    </>
   );
 };
 

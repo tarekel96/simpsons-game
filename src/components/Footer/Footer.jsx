@@ -1,12 +1,10 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ bootstrap }) => {
   return (
     <>
       <footer>
-        <h4 className="pl-5 pb-3 text-warning">
-          Designed by Tarek El-Hajjaoui
-        </h4>
+        <h4 className={bootstrap}>Designed by Tarek El-Hajjaoui</h4>
       </footer>
     </>
   );
