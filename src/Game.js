@@ -10,6 +10,7 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      audio: {},
       score: 0,
       topScore: 0,
       modal: false,
@@ -92,6 +93,28 @@ class Game extends Component {
       ],
     };
   }
+
+  // componentDidMount() {
+  //   const audio = new Audio("audio/intromusic.mp3");
+  //   console.log(audio);
+  //   audio.load();
+  //   this.playAudio(audio);
+  // }
+
+  // playAudio(audio) {
+  //   const audioPromise = audio.play();
+  //   if (audioPromise !== undefined) {
+  //     audioPromise
+  //       .then((_) => {
+  //         // autoplay started
+  //       })
+  //       .catch((err) => {
+  //         console.log("Error playing the audio");
+  //         // catch dom exception
+  //         console.info(err);
+  //       });
+  //   }
+  // }
 
   closeModal = () => {
     this.setState({
@@ -178,6 +201,10 @@ class Game extends Component {
       >
         <header className="App-header text-warning pt-4 d-block">
           <h1 className="text-center">The Simpsons Game</h1>
+          {/* <audio controls>
+            <source src="audio/intromusic.mp3" type="audio/mp3" />
+            Your browser does not support the audio element.
+          </audio> */}
         </header>
         <section className="text-warning text-right pr-5">
           <h2>Score: {this.state.score}</h2>

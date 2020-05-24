@@ -9,6 +9,7 @@
 .main {
   @extend %text;
   height: 100vh;
+  background-image: url("../styles/images/springfield-night.jpg");
 }
 
 .header {
@@ -24,4 +25,17 @@
   padding: 2rem 0;
   max-width: 300px;
   box-shadow: 0 4px 8px 0 goldenrod;
+}
+
+%btn:hover,
+%btn:active {
+  background-color: cornflowerblue;
+}
+
+.onBtn {
+  @extend %btn;
+}
+
+.offBtn {
+  @extend %btn;
 }
