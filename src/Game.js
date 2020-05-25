@@ -1,11 +1,17 @@
+// import packages
 import React, { Component } from "react";
+import { useTransition, animated } from "react-spring";
+import { Transition } from "react-spring/renderprops";
+// import components
 import Thumbnail from "./components/Thumbnail/index.js";
 import Container from "./components/Container/index.js";
 import ModalCom from "./components/Modal/index.js";
 import Footer from "./components/Footer/index.js";
+// import styles
 import backgroundImage from "./styles/images/springfield-night.jpg";
 import styles from "./styles/Game.module.scss";
 
+// doh sound effect
 const DOH = new Audio("audio/doh.mp3");
 
 class Game extends Component {
@@ -114,6 +120,23 @@ class Game extends Component {
     return array;
   };
 
+  // transition thumbnails
+  fadeItems = (array) => {
+    const transitions = useTransition(array, (element) => element.key, {
+      from: { transform: "translate3d(0,-40px,0)" },
+      enter: { transform: "translate3d(0,0px,0)" },
+      leave: { transform: "translate3d(0,-40px,0)" },
+    });
+
+    return transitions;
+
+    // return transitions.map(({ element, props, key }) => (
+    //   <animated.div key={key} style={props}>
+    //     {element.text}
+    //   </animated.div>
+    // ));
+  };
+
   // compares the current score with the top score and updates appropriately
   updateTopScore = (currentScore) => {
     currentScore =
@@ -182,10 +205,6 @@ class Game extends Component {
       >
         <header className="App-header text-warning pt-4 d-block">
           <h1 className="text-center">The Simpsons Game</h1>
-          {/* <audio controls>
-            <source src="audio/intromusic.mp3" type="audio/mp3" />
-            Your browser does not support the audio element.
-          </audio> */}
         </header>
         <section className="text-warning text-right pr-5">
           <h2>Score: {this.state.score}</h2>
@@ -195,6 +214,7 @@ class Game extends Component {
           {this.randomizeOrder(this.state.array).map((character) => (
             <Thumbnail
               bootstrap="pt-4 px-4"
+              customStyles={styles.fade}
               key={character.id}
               id={character.id}
               imageSrc={character.hash}

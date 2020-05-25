@@ -8,9 +8,16 @@ import styles from "./thumbnail.module.scss";
  * @param {string} alt alternate property for image with thumbnail
  * @param {function} incrementScore function that handles the logic of incrementing the score
  */
-const Thumbnail = ({ bootstrap, id, imageSrc, alt, incrementScore }) => {
+const Thumbnail = ({
+  bootstrap,
+  customStyles,
+  id,
+  imageSrc,
+  alt,
+  incrementScore,
+}) => {
   return (
-    <div className={bootstrap}>
+    <div className={bootstrap + " " + customStyles}>
       <button className={styles.thumbnailContainer}>
         <img
           className={styles.thumbnail}
