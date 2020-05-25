@@ -6,6 +6,8 @@ import Footer from "./components/Footer/index.js";
 import backgroundImage from "./styles/images/springfield-night.jpg";
 import styles from "./styles/Game.module.scss";
 
+const DOH = new Audio("audio/doh.mp3");
+
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -94,28 +96,6 @@ class Game extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   const audio = new Audio("audio/intromusic.mp3");
-  //   console.log(audio);
-  //   audio.load();
-  //   this.playAudio(audio);
-  // }
-
-  // playAudio(audio) {
-  //   const audioPromise = audio.play();
-  //   if (audioPromise !== undefined) {
-  //     audioPromise
-  //       .then((_) => {
-  //         // autoplay started
-  //       })
-  //       .catch((err) => {
-  //         console.log("Error playing the audio");
-  //         // catch dom exception
-  //         console.info(err);
-  //       });
-  //   }
-  // }
-
   closeModal = () => {
     this.setState({
       modal: false,
@@ -185,6 +165,7 @@ class Game extends Component {
     if (
       this.state.array.find((char) => (char.id === id ? char.picked : null))
     ) {
+      DOH.play();
       this.resetScore();
     }
   };

@@ -1,47 +1,14 @@
 // import packages
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import components
 import Container from "./components/Container/Container";
 import { Button } from "./components/Button/Button";
 // import styles
-// import backgroundImage from "./styles/images/springfield-night.jpg";
 import styles from "./styles/Menu.module.scss";
 
-const Main = () => {
-  // const [music, toggleMusic] = useState(true);
-  let [audio, toggleAudio] = useState(new Audio("audio/introtrimmed.mp3"));
+const Main = ({ audio, playAudio, stopAudio }) => {
   const [settings, toggleSettings] = useState(false);
-
-  useEffect(() => {
-    // console.log(audio);
-    audio.load();
-    audio.loop = true;
-    startAudio(audio);
-  });
-
-  const playAudio = () => {
-    audio.play();
-  };
-
-  const startAudio = (audio) => {
-    const audioPromise = audio.play();
-    if (audioPromise !== undefined) {
-      audioPromise
-        .then((_) => {
-          // autoplay started
-        })
-        .catch((err) => {
-          console.log("Error playing the audio");
-          // catch dom exception
-          console.info(err);
-        });
-    }
-  };
-
-  const stopAudio = () => {
-    audio.pause();
-  };
 
   return (
     <Container
@@ -51,27 +18,32 @@ const Main = () => {
       bgPosition="center"
       className={`${styles[`main`]}`}
     >
-      <h1 className={styles.header}>WELCOME TO SIMPSONS's MEMORY GAME</h1>
+      <h1 className={styles.header}>WELCOME TO THE SIMPSONS's MEMORY GAME</h1>
       <section className={styles.options}>
         <p>
-          <Button
-            onClick={() => {
-              stopAudio();
-            }}
-          >
-            <Link to="/game">Game</Link>
+          <Button customStyles={styles.menuBtn}>
+            <Link
+              to="/game"
+              className={styles.link}
+              style={{ textDecoration: "none" }}
+            >
+              Game
+            </Link>
           </Button>
         </p>
         <p>
-          <Button>
-            <Link>Leaderboards</Link>
+          <Button customStyles={styles.menuBtn}>
+            <Link className={styles.link} style={{ textDecoration: "none" }}>
+              Leaderboards
+            </Link>
           </Button>
         </p>
         <p>
           <Button
             onClick={() => {
-              toggleSettings(true);
+              toggleSettings(!settings);
             }}
+            customStyles={styles.menuBtn}
           >
             Settings
           </Button>
@@ -88,9 +60,10 @@ const Settings = ({ playAudio, stopAudio }) => {
   return (
     <section>
       Audio:
+      <br />
       <span>
         <Button
-          customStyles={styles.onBtn}
+          customStyles={styles.menuBtn}
           onClick={(audio) => {
             playAudio(audio);
           }}
@@ -100,7 +73,7 @@ const Settings = ({ playAudio, stopAudio }) => {
       </span>
       <span>
         <Button
-          customStyles={styles.offBtn}
+          customStyles={styles.menuBtn}
           onClick={(audio) => {
             stopAudio(audio);
           }}

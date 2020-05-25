@@ -19,23 +19,24 @@
 .options {
   @extend %text;
   font-size: x-large;
-  background-color: #c06502;
+  background-color: $shadow-orange;
   width: 50%;
   margin: 4rem auto;
   padding: 2rem 0;
   max-width: 300px;
-  box-shadow: 0 4px 8px 0 goldenrod;
+  box-shadow: 0 4px 8px 0 $golden;
+}
+
+.link {
+  color: $blacked-out;
+  text-decoration: none;
 }
 
 %btn:hover,
 %btn:active {
-  background-color: cornflowerblue;
+  background-color: $soft-blue;
 }
 
-.onBtn {
-  @extend %btn;
-}
-
-.offBtn {
+.menuBtn {
   @extend %btn;
 }
