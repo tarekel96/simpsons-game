@@ -1,7 +1,5 @@
 // import packages
 import React, { Component } from "react";
-import { useTransition, animated } from "react-spring";
-import { Transition } from "react-spring/renderprops";
 // import components
 import Thumbnail from "./components/Thumbnail/index.js";
 import Container from "./components/Container/index.js";
@@ -120,23 +118,6 @@ class Game extends Component {
     return array;
   };
 
-  // transition thumbnails
-  fadeItems = (array) => {
-    const transitions = useTransition(array, (element) => element.key, {
-      from: { transform: "translate3d(0,-40px,0)" },
-      enter: { transform: "translate3d(0,0px,0)" },
-      leave: { transform: "translate3d(0,-40px,0)" },
-    });
-
-    return transitions;
-
-    // return transitions.map(({ element, props, key }) => (
-    //   <animated.div key={key} style={props}>
-    //     {element.text}
-    //   </animated.div>
-    // ));
-  };
-
   // compares the current score with the top score and updates appropriately
   updateTopScore = (currentScore) => {
     currentScore =
@@ -225,6 +206,8 @@ class Game extends Component {
           <ModalCom
             modal={this.state.modal}
             score={this.state.score}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
             topScore={this.state.topScore}
             closeModal={this.closeModal}
           />

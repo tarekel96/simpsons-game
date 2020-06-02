@@ -1,0 +1,15 @@
+@import "../../styles/typograpy/tokens.scss";
+
+.scorepost {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 4px;
+  font-size: $large;
+}
+
+.scorepost:hover {
+  cursor: pointer;
+  background-color: $golden;
+}

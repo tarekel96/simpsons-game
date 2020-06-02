@@ -33,7 +33,11 @@ const Main = ({ audio, playAudio, stopAudio }) => {
         </p>
         <p>
           <Button customStyles={styles.menuBtn}>
-            <Link className={styles.link} style={{ textDecoration: "none" }}>
+            <Link
+              to="/leaderboards"
+              className={styles.link}
+              style={{ textDecoration: "none" }}
+            >
               Leaderboards
             </Link>
           </Button>

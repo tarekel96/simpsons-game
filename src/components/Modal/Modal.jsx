@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Button } from "../Button/Button";
-import Form from "../../Form.js";
+import Form from "../../Form.jsx";
 import Fade from "react-reveal/Fade";
 
 /**
@@ -29,7 +29,7 @@ const ModalCom = ({ modal = false, score = 0, closeModal, topScore = 0 }) => {
             <h2>
               Your Score: {score} <span>|</span> Top Score: {topScore}
             </h2>
-            <Form />
+            <Form topScore={topScore} />
           </ModalBody>
           <ModalFooter>
             <Button bootstrap="btn-primary mx-auto" onClick={closeModal}>

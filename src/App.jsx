@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Game from "./Game.js";
+import Game from "./Game.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Menu from "./Menu.js";
+import Menu from "./Menu.jsx";
+import Leaderboards from "./Leaderboards.jsx";
+import NotFound from "./NotFound.jsx";
 import "./App.scss";
 
 const MUSIC = new Audio("audio/introtrimmed.mp3");
 
-const App = () => {
+const App = (props) => {
   const [audio] = useState(MUSIC);
 
   useEffect(() => {
-    if (audio) playAudio();
+    //if (audio) playAudio();
   });
 
   const playAudio = () => {
@@ -20,6 +22,7 @@ const App = () => {
   const stopAudio = () => {
     audio.pause();
   };
+
   return (
     <div>
       <Router>
@@ -28,8 +31,12 @@ const App = () => {
             <Menu audio={audio} playAudio={playAudio} stopAudio={stopAudio} />
           </Route>
           <Route exact path="/game">
-            <Game />
+            <Game {...props} />
           </Route>
+          <Route exact path="/leaderboards">
+            <Leaderboards />
+          </Route>
+          <Route path="*" component={NotFound} />
         </Switch>
       </Router>
     </div>
