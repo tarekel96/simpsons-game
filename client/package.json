@@ -2,7 +2,7 @@
   "name": "simpsons-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tarekel96.github.io/simpsons-game",
+  "homepage": "https://tarekel96.github.io",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "node-sass": "^4.14.1",

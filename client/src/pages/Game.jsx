@@ -9,7 +9,7 @@ import Footer from "../components/Footer/index.js";
 import styles from "../styles/Game.module.scss";
 
 // doh sound effect
-//const DOH = new Audio("/audio/doh.mp3");
+const DOH = new Audio("/audio/doh.mp3");
 
 class Game extends Component {
   constructor(props) {
@@ -168,7 +168,7 @@ class Game extends Component {
     if (
       this.state.array.find((char) => (char.id === id ? char.picked : null))
     ) {
-      //DOH.play();
+      DOH.play();
       this.resetScore();
     }
   };
