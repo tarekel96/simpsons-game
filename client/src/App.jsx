@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Game from "./pages/Game.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Menu from "./pages/Menu.jsx";
@@ -23,6 +23,22 @@ const App = (props) => {
   const stopAudio = () => {
     audio.pause();
   };
+
+  useEffect(
+    () => {
+      async function fetchMyAPI() {
+        let response = await fetch("http://localhost:5000/api/userscore", {
+          method: "GET",
+        });
+        response = await response.json();
+        console.log(response);
+        // You can await here
+      }
+      fetchMyAPI();
+    }
+
+    // ...
+  );
 
   return (
     <div>
