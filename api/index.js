@@ -11,4 +11,9 @@ router.get("/userscore", async (req, res) => {
   }
 });
 
+router.post("/newscore", (req, res) => {
+  res.send(req.body);
+  console.log(req.body);
+});
+
 module.exports = router;

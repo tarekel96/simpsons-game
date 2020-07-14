@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Button } from "../Button/Button";
 import styles from "./Form.module.scss";
 
@@ -9,8 +10,17 @@ export const Form = ({ topScore }) => {
       name: entry,
       score,
     };
-    console.log(post);
-    return post;
+    axios
+      .post("http://localhost:5000/api/newscore", JSON.stringify(post), {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((result) => {
+        console.log("score sent...");
+        console.log(result);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
   let handleChange = (event) => {
     setEntry({ name: event.target.value });
