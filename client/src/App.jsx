@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Game from "./pages/Game.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Menu from "./pages/Menu.jsx";
@@ -9,10 +10,10 @@ import "./App.scss";
 // MAIN MENU MUSIC
 const MUSIC = new Audio("/audio/intro.mp3");
 MUSIC.crossOrigin = "anonymous";
-console.log(MUSIC);
 
 const App = (props) => {
   const [audio] = useState(MUSIC);
+  let [userScores, setScores] = useState([]);
 
   const playAudio = () => {
     audio.play().catch((err) => {
@@ -24,21 +25,17 @@ const App = (props) => {
     audio.pause();
   };
 
-  useEffect(
-    () => {
-      async function fetchMyAPI() {
-        let response = await fetch("http://localhost:5000/api/userscore", {
-          method: "GET",
-        });
-        response = await response.json();
-        console.log(response);
-        // You can await here
-      }
-      fetchMyAPI();
+  useEffect(() => {
+    const fetchScores = async () => {
+      const result = await axios.get("http://localhost:5000/api/userscore");
+      setScores(result.data);
+    };
+    try {
+      fetchScores();
+    } catch (error) {
+      console.log(error);
     }
-
-    // ...
-  );
+  }, []);
 
   return (
     <div>
@@ -51,7 +48,7 @@ const App = (props) => {
             <Game {...props} />
           </Route>
           <Route exact path="/leaderboards">
-            <Leaderboards />
+            <Leaderboards userScores={userScores} />
           </Route>
           <Route path="*" component={NotFound} />
         </Switch>
