@@ -5,28 +5,8 @@ import React from "react";
  * @param {array} children array of Card components
  * @return a container component
  */
-const Container = ({
-  bootstrap = "",
-  customStyles,
-  bgSize = "",
-  bgRepeat = "",
-  bgPosition = "",
-  // bgImage,
-  children,
-}) => {
-  return (
-    <main
-      className={bootstrap + customStyles}
-      style={{
-        backgroundSize: bgSize,
-        backgroundPosition: bgPosition,
-        backgroundRepeat: bgRepeat,
-        // backgroundImage: `url(${bgImage})`,
-      }}
-    >
-      {children}
-    </main>
-  );
+const Container = ({ bootstrap = "", className = "", children }) => {
+  return <main className={`${bootstrap} ${className}`}>{children}</main>;
 };
 
 export default Container;

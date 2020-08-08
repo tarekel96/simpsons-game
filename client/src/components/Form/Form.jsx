@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import axios from "axios";
 import { Button } from "../Button/Button";
 import styles from "./Form.module.scss";
 
 export const Form = ({ topScore }) => {
+  const history = useHistory();
   let handleSubmit = (event) => {
     event.preventDefault();
     const post = {
@@ -17,6 +19,12 @@ export const Form = ({ topScore }) => {
       .then((result) => {
         console.log("score sent...");
         console.log(result);
+        history.push({
+          pathname: "/leaderboards",
+          state: {
+            response: "Sucessfully added new score to leaderboards",
+          },
+        });
       })
       .catch((err) => {
         console.error(err);

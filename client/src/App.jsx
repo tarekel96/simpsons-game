@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import API from "./utils/api";
 import Game from "./pages/Game.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Menu from "./pages/Menu.jsx";
@@ -26,15 +26,12 @@ const App = (props) => {
   };
 
   useEffect(() => {
-    const fetchScores = async () => {
-      const result = await axios.get("http://localhost:5000/api/userscore");
-      setScores(result.data);
-    };
-    try {
-      fetchScores();
-    } catch (error) {
-      console.log(error);
-    }
+    const scores = API.fetchScores();
+    scores
+      .then((scores) => setScores(scores))
+      .catch((err) => {
+        throw err;
+      });
   }, []);
 
   return (

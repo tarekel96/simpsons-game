@@ -11,13 +11,14 @@ const router = require("./api");
 
 // parses data into JSON
 app.use(express.json());
-// const DB_CONNECTION = mysql.createConnection({
-//   host: process.env.DB_HOST,
-//   user: process.env.DB_ADMIN,
-//   password: process.env.DB_PASSWORD,
-// });
+const DB_CONNECTION = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_ADMIN,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
 
-// // connect to MySQL DB
+// connect to MySQL DB
 // DB_CONNECTION.connect((err) => {
 //   if (err) throw err;
 //   console.log("Connected to MySQL Database");
@@ -39,4 +40,4 @@ app.listen(PORT, () => {
   console.log(`Node is now running on PORT: ${PORT}`);
 });
 
-// module.exports = DB_CONNECTION;
+module.exports = DB_CONNECTION;

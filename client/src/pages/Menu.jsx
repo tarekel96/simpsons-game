@@ -11,13 +11,7 @@ const Main = ({ audio, playAudio, stopAudio }) => {
   const [settings, toggleSettings] = useState(false);
 
   return (
-    <Container
-      customStyles={styles.main}
-      bgSize="cover"
-      bgRepeat="no-repeat"
-      bgPosition="center"
-      className={`${styles[`main`]}`}
-    >
+    <Container customStyles={styles.main} className={`${styles[`main`]}`}>
       <h1 className={styles.header}>WELCOME TO THE SIMPSONS's MEMORY GAME</h1>
       <section className={styles.options}>
         <p>

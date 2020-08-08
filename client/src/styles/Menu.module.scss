@@ -1,4 +1,4 @@
-@import "./typograpy/tokens.scss";
+@import "../styles/tokens.scss";
 
 %text {
   font-family: $font;
@@ -10,6 +10,9 @@
   @extend %text;
   height: 100vh;
   background-image: url("../styles/images/springfield-night.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .header {

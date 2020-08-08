@@ -22,4 +22,18 @@ DB.all = () => {
   });
 };
 
+DB.addScore = (name, score) => {
+  return new Promise((resolve, reject) => {
+    DB_CONNECTION.query(
+      `INSERT INTO simpsonsGameDB.UserScore (name, score) VALUES ('${name}', ${score});`,
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      }
+    );
+  });
+};
+
 module.exports = DB;

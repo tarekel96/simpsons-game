@@ -1,15 +1,24 @@
-@import "../../styles/typograpy/tokens.scss";
+@import "../../styles/tokens.scss";
 
 .scorepost {
   display: flex;
-  justify-content: space-evenly;
   width: 80%;
   margin: 0 auto;
   border-radius: 4px;
   font-size: $large;
+  span {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    margin-right: 33%;
+  }
 }
 
 .scorepost:hover {
   cursor: pointer;
+  transform: scale(1.1);
   background-color: $golden;
+  .scorepost {
+    border: none;
+  }
 }
