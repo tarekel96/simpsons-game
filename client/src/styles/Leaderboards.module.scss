@@ -1,7 +1,13 @@
+@import "./tokens.scss";
 .leaderboardContainer {
   background-image: url("../styles/images/springfield-night.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
+  font-family: $font;
+  .leaderboardTitle {
+    padding-top: 3rem;
+    color: $golden;
+  }
 }

@@ -14,9 +14,8 @@ const Scorepost = ({
       role="alert"
       key={id}
     >
-      <span>Name: {name} </span>
-      <span>Score: {score} </span>
-      <span>ID#: {id}</span>
+      <span>{name} </span>
+      <span>{score} </span>
     </div>
   );
 };

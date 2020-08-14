@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Grid, GridItem } from "../Grid";
-import { Button } from "../Button";
+// import { Button } from "../Button";
 import styles from "./lightbox.module.scss";
 /**
  * @name LightBox
@@ -98,7 +98,7 @@ export const LightBox = ({
             col={[1, 13]}
             className={`${styles["modalBtnContainer"]}`}
           >
-            <Button
+            {/* <Button
               size="big"
               variant="text"
               className={`${styles["modalBtnOne"]}`}
@@ -113,7 +113,7 @@ export const LightBox = ({
               dark
             >
               Register Now
-            </Button>
+            </Button> */}
           </GridItem>
         </Grid>
       ) : (

@@ -3,6 +3,7 @@ import API from "./utils/api";
 import Game from "./pages/Game.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Menu from "./pages/Menu.jsx";
+import Loading from "./components/Loading";
 import Leaderboards from "./pages/Leaderboards";
 import NotFound from "./pages/NotFound.jsx";
 import "./App.scss";
@@ -47,6 +48,7 @@ const App = (props) => {
           <Route exact path="/leaderboards">
             <Leaderboards userScores={userScores} />
           </Route>
+          <Route path="/loading" component={Loading} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>

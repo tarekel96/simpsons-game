@@ -11,11 +11,11 @@
   max-width: 1280px;
   display: grid;
   grid-template-columns: repeat(12, 1fr); // sets the grid as 12 columns
-  gap: $spacing-m; // $spacing-m 1.5rem
+  gap: 1.5rem;
   grid-auto-flow: row; // GridItems are added row-wise
   // specify the widths of implicit (not explicitly defined but generated) cols and rows
   grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
+  grid-auto-rows: minmax(min-content, auto);
   max-width: 1280px; // grid will not exceed 1280px unless it is fluid
   margin: 0 auto; // horizontally centers Grid
   overflow: hidden;
@@ -64,20 +64,20 @@
         MEDIA QUERIES
 **************************************/
 // lg-breakpoint - ensures that grid maintains lg-breakpoint horizontal margin spacing
-@media (min-width: $lg-breakpoint-start) and (max-width: $lg-breakpoint-end) {
+@media screen and (max-width: $lg-breakpoint-end) {
   .grid {
     max-width: 100%;
-    margin: 0 $spacing-m;
+    margin: 0 1.5rem;
   }
 }
 // md-breakpoint - Grid switches to 8 col system, smaller gutter spaces, smaller horizontal margin spacing
-@media (min-width: $md-breakpoint-start) and (max-width: $md-breakpoint-end) {
+@media screen and (max-width: $md-breakpoint-end) {
   .grid {
     grid-template-columns: repeat(8, 1fr); // sets the grid as 8 columns
     max-width: 100%;
     // change gutter and horizontal margin spacing
-    gap: $spacing-s; // $spacing-s 1 rem
-    margin: 0 $spacing-s;
+    gap: 1rem;
+    margin: 0 1rem;
   }
   // the col and row classes - creates classes based on col and row variables
   @for $i from 1 through 9 {
@@ -94,13 +94,13 @@
   }
 }
 // sm-breakpoint - Grid switches to 8 col system, smaller gutter spaces, smaller horizontal margin spacing
-@media (min-width: $sm-breakpoint-start) and (max-width: $sm-breakpoint-end) {
+@media screen and (max-width: $sm-breakpoint-end) {
   .grid {
     grid-template-columns: repeat(4, 1fr); // sets the grid as 4 columns
     max-width: 100%;
     // change gutter and horizontal margin spacing
-    gap: $spacing-s;
-    margin: 0 $spacing-s;
+    gap: 1rem;
+    margin: 0 1rem;
   }
   // the col and row classes - creates classes based on col and row variables
   @for $i from 1 through 5 {

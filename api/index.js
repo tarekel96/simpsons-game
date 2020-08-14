@@ -7,8 +7,7 @@ router.get("/userscore", async (req, res) => {
     let results = await DB.all();
     res.json(results);
   } catch (e) {
-    res.send("Error fetching data from DB");
-    res.sendStatus(500);
+    res.sendStatus(500).send("Error fetching data from DB");
   }
 });
 
@@ -18,8 +17,7 @@ router.post("/newscore", async (req, res) => {
     let newScore = await DB.addScore(name.name, score.score);
     res.json(newScore);
   } catch (e) {
-    res.send("Error in adding new score to DB");
-    res.sendStatus(500);
+    res.sendStatus(500).send("Error in adding new score to DB");
   }
 });
 

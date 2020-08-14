@@ -6,12 +6,14 @@ import styles from "./Form.module.scss";
 
 export const Form = ({ topScore }) => {
   const history = useHistory();
-  let handleSubmit = (event) => {
+  const handleSubmit = (event) => {
+    const { name } = entry;
     event.preventDefault();
     const post = {
-      name: entry,
+      name,
       score,
     };
+    updateForm({ submitting: true });
     axios
       .post("http://localhost:5000/api/newscore", JSON.stringify(post), {
         headers: { "Content-Type": "application/json" },
@@ -19,6 +21,7 @@ export const Form = ({ topScore }) => {
       .then((result) => {
         console.log("score sent...");
         console.log(result);
+        updateForm({ submitting: false });
         history.push({
           pathname: "/leaderboards",
           state: {
@@ -27,42 +30,48 @@ export const Form = ({ topScore }) => {
         });
       })
       .catch((err) => {
+        updateForm({ submitting: false });
         console.error(err);
       });
   };
-  let handleChange = (event) => {
+  const handleChange = (event) => {
     setEntry({ name: event.target.value });
   };
-  let [proceedWithForm, showForm] = useState(false);
-  let [entry, setEntry] = useState({ name: "" });
-  let [score, setScore] = useState(0);
+  const [proceedWithForm, showForm] = useState(false);
+  const [entry, setEntry] = useState({ name: "" });
+  const [score, setScore] = useState(0);
+  const [form, updateForm] = useState({ submitting: true, message: "" });
+
   useEffect(() => {
-    setScore({ score: topScore });
+    setScore(topScore);
   }, [topScore]);
-  return (
-    <>
-      <p>Would You Like to Submit Your Score?</p>
-      <Button
-        variant="primary"
-        customStyle={`${styles.confirmBtn}`}
-        onClick={() => {
-          showForm(true);
-        }}
-      >
-        Heck Yeah!
-      </Button>
-      {proceedWithForm ? (
-        <form className={styles.scoreForm} onSubmit={handleSubmit}>
-          <p>Enter your name:</p>
-          <input
-            type="text"
-            value={entry.name}
-            name="name"
-            onChange={handleChange}
-          />
-          <Button>Submit</Button>
-        </form>
-      ) : null}
-    </>
-  );
+  if (topScore !== undefined) {
+    return (
+      <>
+        <p>Would You Like to Submit Your Score?</p>
+        <Button
+          variant="primary"
+          customStyle={`${styles.confirmBtn}`}
+          onClick={() => {
+            showForm(true);
+          }}
+        >
+          Heck Yeah!
+        </Button>
+        {proceedWithForm ? (
+          <form className={styles.scoreForm} onSubmit={handleSubmit}>
+            <p>Enter your name:</p>
+            <input
+              placeholder={"Name"}
+              type="text"
+              value={entry.name}
+              name="name"
+              onChange={handleChange}
+            />
+            <Button>Submit</Button>
+          </form>
+        ) : null}
+      </>
+    );
+  }
 };

@@ -1,7 +1,6 @@
-import React from "react"
+import React from "react";
 // import styles
-import "./custom-grid.scss"
-
+import "./custom-grid.scss";
 /**
  * @name Container
  * @param {Object} children - the HTML elements within the GridContainer
@@ -13,23 +12,32 @@ export const Container = ({
   className = "",
   fluid = false,
   onClick,
+  ref,
 }) => {
   if (fluid) {
-    className += " fluid"
+    className += " fluid";
   }
   return (
     <div
+      ref={ref}
       className={`gridContainer ${className}`}
       onClick={() => {
         if (onClick) {
-          onClick()
+          onClick();
         }
       }}
+      onKeyDown={() => {
+        if (onClick) {
+          onClick();
+        }
+      }}
+      role="button"
+      tabIndex={0}
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 /**
  * @name Grid
@@ -39,10 +47,10 @@ export const Container = ({
  */
 export const Grid = ({ children, className = "", fluid = false }) => {
   if (fluid) {
-    className += " fluid"
+    className += " fluid";
   }
-  return <div className={`grid ${className}`}>{children}</div>
-}
+  return <div className={`grid ${className}`}>{children}</div>;
+};
 
 /**
  * @name GridItem
@@ -75,13 +83,13 @@ export const GridItem = ({
 }) => {
   // utility props
   if (centerX) {
-    className += " gridItemCenterX"
+    className += " gridItemCenterX";
   }
   if (centerY) {
-    className += " gridItemCenterY"
+    className += " gridItemCenterY";
   }
   if (centerText) {
-    className += " gridItemCenterText"
+    className += " gridItemCenterText";
   }
 
   // adds the class names that specify the span of the cols
@@ -91,12 +99,12 @@ export const GridItem = ({
       !checkCols(1, 13, col[0]) &&
       !checkCols(1, 13, col[1])
     ) {
-      className += " cols-" + col[0] + "-" + col[1]
+      className += " cols-" + col[0] + "-" + col[1];
     }
   }
   if (row[0] !== undefined && row[1] !== undefined) {
     if (!checkPropArraySizes(col, row) && !checkRows(row[0], row[1])) {
-      className += " rows-" + row[0] + "-" + row[1]
+      className += " rows-" + row[0] + "-" + row[1];
     }
   }
   if (mdCol[0] !== undefined && mdCol[1] !== undefined) {
@@ -105,12 +113,12 @@ export const GridItem = ({
       !checkCols(1, 9, mdCol[0]) &&
       !checkCols(1, 9, mdCol[1])
     ) {
-      className += " cols-md-" + mdCol[0] + "-" + mdCol[1]
+      className += " cols-md-" + mdCol[0] + "-" + mdCol[1];
     }
   }
   if (mdRow[0] !== undefined && mdRow[1] !== undefined) {
     if (!checkPropArraySizes(mdCol, mdRow) && !checkRows(mdRow[0], mdRow[1])) {
-      className += " rows-md-" + mdRow[0] + "-" + mdRow[1]
+      className += " rows-md-" + mdRow[0] + "-" + mdRow[1];
     }
   }
   if (smCol[0] !== undefined && smCol[1] !== undefined) {
@@ -119,16 +127,16 @@ export const GridItem = ({
       !checkCols(1, 5, smCol[0]) &&
       !checkCols(1, 5, smCol[1])
     ) {
-      className += " cols-sm-" + smCol[0] + "-" + smCol[1]
+      className += " cols-sm-" + smCol[0] + "-" + smCol[1];
     }
   }
   if (smRow[0] !== undefined && smRow[1] !== undefined) {
     if (!checkPropArraySizes(smCol, smRow) && !checkRows(smRow[0], smRow[1])) {
-      className += " rows-sm-" + smRow[0] + "-" + smRow[1]
+      className += " rows-sm-" + smRow[0] + "-" + smRow[1];
     }
   }
-  return <div className={`${className} gridItem `}>{children}</div>
-}
+  return <div className={`${className} gridItem `}>{children}</div>;
+};
 
 /************************************** 
         ERROR CHECKING FUNCTIONS
@@ -140,42 +148,42 @@ const checkCols = (min, max, col) => {
       new Error(
         `The col props value (${col}) exceeds the max track number: ${max}`
       )
-    )
-    return true
+    );
+    return true;
   }
   if (col < min) {
     console.log(
       new Error(
         `The col props value ${col} is below the min track number: ${max}`
       )
-    )
-    return true
+    );
+    return true;
   }
-  return false
-}
+  return false;
+};
 const checkRows = (rowStart, rowEnd) => {
   if (rowStart > rowEnd) {
     console.log(
       new Error(
         `The starting row track: ${rowStart} exceeds the ending row track: ${rowEnd}`
       )
-    )
-    return true
+    );
+    return true;
   }
-  return false
-}
+  return false;
+};
 const checkPropArraySizes = (array1, array2) => {
   if (array1.length > 2) {
     console.log(
       new Error(`Invalid prop input: ${array1} should not exceed 2 elements`)
-    )
-    return true
+    );
+    return true;
   }
   if (array2.length > 2) {
     console.log(
       new Error(`Invalid prop input: ${array2} should not exceed 2 elements`)
-    )
-    return true
+    );
+    return true;
   }
-  return false
-}
+  return false;
+};

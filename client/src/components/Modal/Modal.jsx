@@ -10,7 +10,7 @@ import Fade from "react-reveal/Fade";
  * @param { number } score the current score for a player
  * @param { number } topScore saves the top score for a player
  */
-const ModalCom = ({ modal = false, score = 0, closeModal, topScore = 0 }) => {
+const ModalCom = ({ modal = false, score = 0, closeModal, topScore }) => {
   return (
     <>
       <Fade clear>

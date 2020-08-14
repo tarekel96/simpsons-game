@@ -1,5 +1,6 @@
 @import "./styles/tokens.scss";
 
-* {
+*,
+body {
   font-family: $font;
 }

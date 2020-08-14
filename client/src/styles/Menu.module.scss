@@ -21,7 +21,7 @@
 
 .options {
   @extend %text;
-  font-size: x-large;
+  font-size: 2rem;
   background-color: $shadow-orange;
   width: 50%;
   margin: 4rem auto;
@@ -34,12 +34,3 @@
   color: $blacked-out;
   text-decoration: none;
 }
-
-// %btn:hover,
-// %btn:active {
-//   background-color: $soft-blue;
-// }
-
-// .menuBtn {
-//   @extend %btn;
-// }

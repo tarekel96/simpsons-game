@@ -17,14 +17,18 @@ const Leaderboards = () => {
   console.log(userScores);
   return (
     <Container className={`${styles["leaderboardContainer"]}`}>
-      <h3 style={{ textAlign: "center" }}>LEADERBOARDS</h3>
+      <h3
+        style={{ textAlign: "center" }}
+        className={`${styles["leaderboardTitle"]}`}
+      >
+        LEADERBOARDS
+      </h3>
       {userScores !== [] ? (
         userScores.map((entry) => {
           return (
             <Scorepost
               name={entry.Name}
               score={entry.Score}
-              id={entry.UserScoreId}
               key={entry.UserScoreId}
             />
           );
