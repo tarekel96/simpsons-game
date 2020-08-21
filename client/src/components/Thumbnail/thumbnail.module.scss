@@ -4,6 +4,7 @@
 
 .thumbnailContainer {
   @extend %roundEdges;
+  background-color: white;
 }
 
 .thumbnail {
@@ -12,7 +13,6 @@
 }
 
 .thumbnail:hover {
-  box-shadow: 0 4px 8px 0 goldenrod;
   transform: scale(1.3);
   cursor: pointer;
 }

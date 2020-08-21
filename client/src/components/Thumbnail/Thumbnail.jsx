@@ -18,7 +18,7 @@ const Thumbnail = ({
 }) => {
   return (
     <div className={bootstrap + " " + customStyles}>
-      <button className={styles.thumbnailContainer}>
+      <div className={styles.thumbnailContainer}>
         <img
           className={styles.thumbnail}
           id={id}
@@ -26,7 +26,7 @@ const Thumbnail = ({
           alt={alt}
           onClick={incrementScore.bind(this, id)}
         />
-      </button>
+      </div>
     </div>
   );
 };
