@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // import components
 import Container from "../components/Container/Container";
 import { Button } from "../components/Button/Button";
-import { LightBox } from "../components/LightBox";
+import LightBox from "../components/Lightbox";
 // import styles
 import styles from "../styles/Menu.module.scss";
 
@@ -26,7 +26,7 @@ const Main = ({ audio, playAudio, stopAudio }) => {
             className={styles.link}
             style={{ textDecoration: "none" }}
           >
-            <Button>Game</Button>
+            <Button className={styles["menuBtn"]}>Game</Button>
           </Link>
         </p>
         <p>
@@ -35,11 +35,12 @@ const Main = ({ audio, playAudio, stopAudio }) => {
             className={styles.link}
             style={{ textDecoration: "none" }}
           >
-            <Button>Leaderboards</Button>
+            <Button className={styles["menuBtn"]}>Leaderboards</Button>
           </Link>
         </p>
         <p>
           <Button
+            className={styles["menuBtn"]}
             onClick={() => {
               toggleSettings(!settings);
             }}
@@ -63,6 +64,7 @@ const Settings = ({ playAudio, stopAudio }) => {
       <br />
       <span>
         <Button
+          className={styles["menuBtn"]}
           onClick={(audio) => {
             playAudio(audio);
           }}
@@ -72,6 +74,7 @@ const Settings = ({ playAudio, stopAudio }) => {
       </span>
       <span>
         <Button
+          className={styles["menuBtn"]}
           onClick={(audio) => {
             stopAudio(audio);
           }}

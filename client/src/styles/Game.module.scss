@@ -1,16 +1,66 @@
+@import "../styles/tokens.scss";
+
 .game {
   min-height: 100vh;
   justify-content: center;
   background-image: url("../styles/images/springfield-night.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+  color: $color-tang-yellow;
+  text-align: center;
+  .scoreSection {
+    position: absolute;
+    right: 8rem;
+  }
+  .gameGrid {
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 900px;
+    .gameGridItem {
+      display: inline-flex;
+      width: 127px;
+      margin: 1rem;
+    }
+    .gameGridItem img {
+      width: 100%;
+      max-width: 127px;
+      height: 193px;
+    }
+  }
 }
-
-div img {
-  width: 127px;
-  height: 193px;
+@media (min-width: $md-breakpoint-end) and (max-width: $lg-breakpoint-end) {
+  .scoreSection {
+    top: 0.75rem !important;
+    right: 1.25rem !important;
+  }
 }
-
+@media (min-width: $sm-breakpoint-end) and (max-width: $md-breakpoint-end) {
+  .scoreSection {
+    top: 0.75rem !important;
+    right: 1.25rem !important;
+  }
+  .gameGrid {
+    max-width: 600px !important;
+  }
+}
+@media screen and (max-width: $sm-breakpoint-end) {
+  .header {
+  }
+  .scoreSection {
+    position: relative !important;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    right: 0 !important;
+  }
+  .gameGrid {
+    max-width: 400px !important;
+  }
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;

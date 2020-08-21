@@ -1,0 +1,137 @@
+// zero height tokens - colors and spacings
+@import "../../styles/tokens.scss";
+// icon alt background colors - fill
+.fillaqua {
+  fill: $color-caribbean-aqua;
+}
+.fillred {
+  fill: $color-coral-red;
+}
+.fillfijiblue {
+  fill: $color-fiji-blue;
+}
+.fillnemoorange {
+  fill: $color-nemo-orange;
+}
+.fillnemoorange50 {
+  fill: $color-nemo-orange-50;
+}
+.filloceanblue {
+  fill: $color-ocean-blue;
+}
+.fillpearlwhite {
+  fill: $color-pearl-white;
+}
+.fillsealgrey {
+  fill: $color-seal-grey-80;
+}
+.fillsharkgrey {
+  fill: $color-shark-grey;
+}
+.fillstingraygrey {
+  fill: $color-stingray-grey;
+}
+.filltangyellow {
+  fill: $color-tang-yellow;
+}
+.fillwhalegrey {
+  fill: $color-whale-grey;
+}
+// icon alt stroke color
+.strokeaqua {
+  stroke: $color-caribbean-aqua;
+}
+.strokered {
+  stroke: $color-coral-red;
+}
+.strokefijiblue {
+  stroke: $color-fiji-blue;
+}
+.strokenemoorange {
+  stroke: $color-nemo-orange;
+}
+.strokenemoorange50 {
+  stroke: $color-nemo-orange-50;
+}
+.strokeoceanblue {
+  stroke: $color-ocean-blue;
+}
+.strokepearlwhite {
+  stroke: $color-pearl-white;
+}
+.strokesealgrey {
+  stroke: $color-seal-grey-80;
+}
+.strokesharkgrey {
+  stroke: $color-shark-grey;
+}
+.strokestingraygrey {
+  stroke: $color-stingray-grey;
+}
+.stroketangyellow {
+  stroke: $color-tang-yellow;
+}
+.strokewhalegrey {
+  stroke: $color-whale-grey;
+}
+/** color props of icon must be one of the following classes **/
+.aqua {
+  fill: $color-caribbean-aqua;
+  &alt {
+    stroke: $color-caribbean-aqua;
+  }
+}
+.red {
+  fill: $color-coral-red;
+  &alt {
+    stroke: $color-coral-red;
+  }
+}
+.fijiblue {
+  fill: $color-fiji-blue;
+  &alt {
+    stroke: $color-fiji-blue;
+  }
+}
+.nemoorange {
+  fill: $color-nemo-orange;
+  &alt {
+    stroke: $color-nemo-orange;
+  }
+}
+.oceanblue {
+  fill: $color-ocean-blue;
+  &alt {
+    stroke: $color-ocean-blue;
+  }
+}
+.pearlwhite {
+  fill: $pure-white;
+  &alt {
+    stroke: $pure-white;
+  }
+}
+.sealgrey {
+  fill: $color-seal-grey;
+  &alt {
+    stroke: $color-seal-grey;
+  }
+}
+.sharkgrey {
+  fill: $color-shark-grey;
+  &alt {
+    stroke: $color-shark-grey;
+  }
+}
+.tangyellow {
+  fill: $color-tang-yellow;
+  &alt {
+    stroke: $color-tang-yellow;
+  }
+}
+.whalegrey {
+  fill: $color-whale-grey;
+  &alt {
+    stroke: $color-whale-grey;
+  }
+}

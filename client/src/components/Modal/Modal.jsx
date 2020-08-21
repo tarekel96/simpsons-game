@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import LightBox from "../Lightbox";
 import { Button } from "../Button/Button";
 import { Form } from "../Form/Form.jsx";
 import Fade from "react-reveal/Fade";
@@ -22,10 +23,10 @@ const ModalCom = ({ modal = false, score = 0, closeModal, topScore }) => {
                 fontWeight: "bold",
               }}
             >
-              Game Over
+              Game Over8
             </p>
           </ModalHeader>
-          <ModalBody className="mx-auto">
+          <ModalBody className="text-center">
             <h2>
               Your Score: {score} <span>|</span> Top Score: {topScore}
             </h2>

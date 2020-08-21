@@ -1,20 +1,16 @@
-// import objektiv-mk2 font and zero height tokens
 @import "../../styles/tokens.scss";
 
 /***** BASE BUTTON ****/
 .btn {
   height: 48px;
-  min-width: 122px;
-  padding: 0 1rem;
-  margin: 0.2rem;
+  padding: 0 1.5rem;
   border: none;
   border-radius: 4px;
-  font-family: $font;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: $blacked-out;
+  outline: none;
+  &.fullWidthButton {
+    width: 100%;
+  }
+
   // use flexbox to vertically center btn content and evenly space content horizontally
   & div {
     display: flex;
@@ -24,16 +20,29 @@
   }
   &:hover {
     cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   & .btncontent {
     white-space: nowrap; // IMPORTANT - keeps the button content only on one line
   }
 }
+.primaryBtnTextColor,
+.primaryBtnTextColorDisabled {
+  color: $pure-white;
+}
+.textBtnTextColor,
+.outlinedBtnTextColor {
+  color: $color-shark-grey;
+}
+.textBtnTextColorDisabled,
+.outlinedBtnTextColorDisabled {
+  color: $color-stingray-grey;
+}
 
 /***** DANGER BUTTON *****/
 .danger,
 .ddanger {
-  background-color: darkred;
+  background-color: $color-coral-red;
   color: $pure-white;
   border: none;
 }
@@ -49,6 +58,16 @@
   max-height: 56px;
 }
 
+/***** INHERITANCE *****/
+%leftIconSpacing {
+  position: relative;
+  right: 8px;
+}
+%rightIconSpacing {
+  position: relative;
+  left: 8px;
+}
+
 /**************************************************************** 
 LIGHT MODE
  ****************************************************************/
@@ -59,60 +78,191 @@ Color Scheme - background color, text color, and/or border color for the differe
 Transition Colors - the color scheme state triggered from an event (hover or click)
 */
 %primaryColorScheme {
-  background-color: $soft-blue;
+  background-color: $color-ocean-blue;
   color: $pure-white;
 }
 %primaryTransitionColors {
-  background-color: #406195;
+  background-color: $color-ocean-blue-75;
   color: $pure-white;
   border: none;
 }
-%secondaryColorScheme {
-  background-color: $pure-white;
-  color: $soft-blue;
-  border: 2px solid $soft-blue;
+%primaryEventColors {
+  background-color: $color-ocean-blue-50;
+  color: $pure-white;
+  border: none;
 }
-%secondaryTransitionColors {
-  background-color: darkblue;
-  color: $soft-blue;
-  border: 2px solid $soft-blue;
+%outlinedColorScheme {
+  background-color: $pure-white;
+  color: $color-shark-grey;
+  border: 2px solid $color-shark-grey;
+}
+%outlinedTransitionColors {
+  background-color: $color-ocean-blue-25;
+  color: $color-shark-grey;
+  border: 2px solid $color-shark-grey;
+}
+%outlinedEventColors {
+  background-color: $color-ocean-blue-50;
+  color: $color-shark-grey;
+  border: 2px solid $color-shark-grey;
 }
 %textColorScheme {
   background-color: $pure-white;
-  color: $soft-blue;
+  color: $color-shark-grey;
 }
-%textTransitionColorScheme {
-  background-color: darkblue;
-  color: $pure-white;
+%textTransitionColors {
+  background-color: $color-ocean-blue-25;
+  color: $color-shark-grey;
+}
+%textEventColors {
+  background-color: $color-ocean-blue-50;
+  color: $color-shark-grey;
+}
+// transition color scheme state for Text with Link variant
+%textTransitionLink {
+  background-color: $pure-white;
+  text-decoration: underline;
 }
 
-/***** PRIMARY BUTTON *****/
+/***** PRIMARY BUTTON (LIGHT MODE) *****/
 .primary {
   @extend %primaryColorScheme;
   // on hover and clicked states have the same color scheme
-  &clicked,
   &:hover {
     @extend %primaryTransitionColors;
   }
-}
-
-/***** SECONDARY BUTTON *****/
-.secondary {
-  @extend %secondaryColorScheme;
-  &clicked,
-  &:hover {
-    @extend %secondaryTransitionColors;
+  &clicked {
+    @extend %primaryEventColors;
+  }
+  &:disabled {
+    background-color: $color-stingray-grey;
+    color: $pure-white;
+  }
+  &disabled:hover,
+  &disabledclicked:hover {
+    cursor: not-allowed;
   }
 }
 
-/***** TEXT BUTTONS *****/
+/***** OUTLINED BUTTON (LIGHT MODE) *****/
+.outlined {
+  @extend %outlinedColorScheme;
+  &:hover {
+    @extend %outlinedTransitionColors;
+  }
+  &clicked {
+    @extend %outlinedEventColors;
+  }
+  &:disabled {
+    background-color: $pure-white;
+    color: $color-stingray-grey;
+    border: 2px solid $color-stingray-grey;
+  }
+  &disabled:hover,
+  &disabledclicked:hover {
+    cursor: not-allowed;
+  }
+}
+
+// /***** TEXT BUTTONS *****/
+// /***** TEXT BUTTONS (LIGHT MODE) *****/
+// .text {
+//   /***** TEXTLINK BUTTONS (LIGHT MODE) *****/
+//   &link,
+//   &linkclicked {
+//     text-transform: capitalize;
+//   }
+// }
+
+/***** ICONS (LIGHT MODE) *****/
+.iconleft {
+  @extend %leftIconSpacing;
+  transition: right 0.25s; // the on hover animation for the left icon within the btn
+}
+.iconright {
+  @extend %rightIconSpacing;
+  transition: left 0.25s; // the on hover animation for the right icon within the btn
+}
+
+/***** TEXT BUTTONS W/OUT ICONS (LIGHT MODE) *****/
 .text {
   @extend %textColorScheme;
   border: none;
+  &icon {
+    @extend %textColorScheme;
+    border: none;
+  }
   // clicked and on hover have the same color scheme states
-  &clicked:hover,
-  &:hover {
-    @extend %textTransitionColorScheme;
+  &:hover,
+  &iconclicked:hover,
+  &iconclicked {
+    @extend %textTransitionColors;
+    border: none;
+  }
+  &clicked {
+    @extend %textEventColors;
+    border: none;
+  }
+  &:disabled {
+    background-color: $pure-white;
+    color: $color-stingray-grey;
+    border: none;
+    &:hover {
+      box-shadow: none;
+    }
+  }
+  /***** ICONS ANIMATION *****/
+  &icon:hover,
+  &iconclicked:hover {
+    box-shadow: none;
+    .iconleft {
+      right: 16px;
+    }
+    .iconright {
+      left: 16px;
+    }
+  }
+  &icon:disabled {
+    background-color: $pure-white;
+    color: $color-stingray-grey;
+    border: none;
+    &:hover {
+      box-shadow: none;
+      transition: none !important;
+    }
+  }
+
+  /***** TEXT DISABLED BUTTON *****/
+  &disabled,
+  &disabledicon,
+  &disabledclicked,
+  &disablediconclicked {
+    color: $pure-white;
+    background-color: $color-stingray-grey;
+    border: none;
+    .iconleft {
+      @extend %leftIconSpacing;
+    }
+    .iconright {
+      @extend %rightIconSpacing;
+    }
+  }
+
+  &disabled:hover,
+  &disabledclicked:hover {
+    cursor: not-allowed;
+  }
+
+  /***** TEXT WITH LINK BUTTON (LIGHT MODE) *****/
+  // CHANGED CHANGED
+  &link {
+    @extend %textColorScheme;
+    border: none;
+  }
+  // clicked and on hover have the same color scheme states
+  &linkclicked,
+  &link:hover {
+    @extend %textTransitionLink;
     border: none;
   }
 }
@@ -128,18 +278,18 @@ Transition Colors
 /***** INHERITANCE (DARK MODE) *****/
 %darkPrimaryColorScheme {
   background-color: $pure-white;
-  color: $soft-blue;
+  color: $deep-fishing-blue;
   border: 2px solid $pure-white;
   border-radius: 4px;
 }
 %darkPrimaryTransition {
-  background-color: darkblue;
-  color: $soft-blue;
-  border: 2px solid $soft-blue;
+  background-color: $tide-pool-blue;
+  color: $deep-fishing-blue;
+  border: 2px solid $deep-fishing-blue;
   border-radius: 4px;
 }
 %darkSecondaryColorScheme {
-  background-color: darkblue;
+  background-color: $ocean-blue;
   color: $pure-white;
   border: 2px solid $pure-white;
 }
@@ -150,14 +300,32 @@ Transition Colors
   border-radius: 4px;
 }
 %darkTextColorScheme {
-  background-color: dark-blue;
+  background-color: $ocean-blue;
   color: $pure-white;
   border: none;
 }
-%darkTextTransitionHover,
+%darkTextTransitionHover {
+  background-color: #465273;
+  color: $pure-white;
+  border: none;
+}
 %darkTextTransitionClicked {
   background-color: #465273;
   color: $pure-white;
+}
+%darkTextLinkColorScheme {
+  background-color: $ocean-blue;
+  color: $pure-white;
+  border: none;
+}
+%darkTextLinkTransitionHover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+%darkTextLinkTransitionClicked {
+  background-color: $ocean-blue;
+  color: $pure-white;
+  text-decoration: underline;
   border: none;
 }
 
@@ -169,6 +337,16 @@ Transition Colors
   &:hover {
     @extend %darkPrimaryTransition;
   }
+  // PRIMARY BUTTON DISABLED - (DARK MODE)
+  &disabled,
+  &disabledclicked {
+    background-color: $fin-grey;
+    color: $color-stingray-grey;
+  }
+  &disabled:hover,
+  &disabledclicked:hover {
+    cursor: not-allowed;
+  }
 }
 /***** SECONDARY BUTTON - (DARK MODE) *****/
 .dsecondary {
@@ -178,23 +356,138 @@ Transition Colors
   &:hover {
     @extend %darkSecondaryTransition;
   }
+  /***** SECONDARY BUTTON DISABLED - (DARK MODE) *****/
+  &disabled,
+  &disabledclicked {
+    color: $seal-grey;
+    border: 2px solid $seal-grey;
+    background-color: $ocean-blue;
+  }
+  &disabled:hover,
+  &disabledclicked:hover {
+    cursor: not-allowed;
+  }
 }
 
 /***** TEXT BUTTONS - (DARK MODE) *****/
 /***** TEXT BUTTONS SPACING (DARK MODE) *****/
 .dtext {
-  & {
+  /***** TEXTLINK BUTTONS - CLICKED STATE (DARK MODE) *****/
+  &link,
+  &linkclicked {
+    text-transform: capitalize !important;
+  }
+}
+.dtext {
+  &,
+  &icon,
+  &aquaicon,
+  &blueicon,
+  &orangeicon,
+  &yellowicon,
+  &aqua,
+  &blue,
+  &orange,
+  &yellow {
     /***** TEXT COLOR SCHEME - DEFAULT STATE (DARK MODE) *****/
     @extend %darkTextColorScheme;
     /***** ICON SPACING AND ANIMATIONS - (DARK MODE) *****/
+    .iconleft {
+      @extend %leftIconSpacing;
+      transition: right 0.25s;
+    }
+    .iconright {
+      @extend %rightIconSpacing;
+      transition: left 0.25s;
+    }
   }
   /***** TEXT BUTTONS WITHOUT ICONS - ON HOVER STATE:the color scheme changes (DARK MODE) *****/
-  &:hover {
+  &:hover,
+  &aqua:hover,
+  &blue:hover,
+  &orange:hover,
+  &yellow:hover {
     @extend %darkTextTransitionHover;
   }
+  /***** TEXT BUTTONS WITH ICONS - ON HOVER STATE: the colors remain the same, but icons animate (DARK MODE) *****/
+  &:hover,
+  &icon:hover,
+  &aqua:hover,
+  &blue:hover,
+  &orange:hover,
+  &yellow:hover,
+  &aquaicon:hover,
+  &blueicon:hover,
+  &orangeicon:hover,
+  &yellowicon:hover {
+    border: none;
+    .iconleft {
+      right: 16px;
+    }
+    .iconright {
+      left: 16px;
+    }
+  }
   /***** TEXT BUTTONS - CLICKED STATE (DARK MODE) *****/
-  &clicked {
+  &clicked,
+  &iconclicked,
+  &aquaclicked,
+  &blueclicked,
+  &orangeclicked,
+  &yellowclicked,
+  &aquaiconclicked,
+  &blueiconclicked,
+  &orangeiconclicked,
+  &yellowiconclicked {
     @extend %darkTextTransitionClicked;
+  }
+  /***** TEXT BUTTONS - CLICKED - ON HOVER STATE (DARK MODE) *****/
+  &clicked:hover,
+  &iconclicked:hover,
+  &aquaclicked:hover,
+  &blueclicked:hover,
+  &orangeclicked:hover,
+  &yellowclicked:hover,
+  &aquaiconclicked:hover,
+  &blueiconclicked:hover,
+  &orangeiconclicked:hover,
+  &yellowiconclicked:hover {
+    .iconleft {
+      right: 16px;
+    }
+    .iconright {
+      left: 16px;
+    }
+  }
+  /***** TEXT DISABLED BUTTON (DARK MODE) *****/
+  &disabled,
+  &disabledclicked {
+    color: $seal-grey;
+    background-color: $ocean-blue;
+    border: none;
+    .iconleft {
+      @extend %leftIconSpacing;
+    }
+    .iconright {
+      @extend %rightIconSpacing;
+    }
+  }
+  &disabled:hover,
+  &disabledclicked:hover {
+    cursor: not-allowed;
+  }
+  /***** TEXT WITH LINK BUTTON - DEFAULT STATE (DARK MODE) *****/
+  &link {
+    @extend %darkTextLinkColorScheme;
+  }
+  /***** TEXT WITH LINK BUTTON - CLICKED STATE (DARK MODE) *****/
+  &linkclicked {
+    @extend %darkTextLinkTransitionClicked;
+  }
+  /***** TEXT WITH LINK BUTTON - HOVERED STATE (DARK MODE) *****/
+  &link:hover,
+  &linkclicked:hover {
+    @extend %darkTextLinkTransitionHover;
   }
 }
 
@@ -206,5 +499,68 @@ Transition Colors
     max-height: 40px !important;
     font-size: 14px;
     line-height: 16px;
+    .iconleft,
+    .iconright {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.navigationButtons {
+  button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+    &:disabled {
+      svg {
+        fill: $color-stingray-grey;
+        &alt {
+          stroke: $color-stingray-grey;
+        }
+        &:hover {
+          fill: $color-stingray-grey;
+          filter: none;
+          &alt {
+            stroke: $color-stingray-grey;
+          }
+        }
+      }
+    }
+    .leftNav {
+      margin-right: 32px;
+      &:hover {
+        fill: $color-ocean-blue-75;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        &alt {
+          stroke: $color-ocean-blue-75;
+        }
+      }
+      &Clicked {
+        margin-right: 32px;
+        fill: $color-ocean-blue-50;
+        &alt {
+          stroke: $color-ocean-blue-50;
+        }
+      }
+    }
+    .rightNav {
+      &:hover {
+        fill: $color-ocean-blue-75;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        &alt {
+          stroke: $color-ocean-blue-75;
+        }
+      }
+      &Clicked {
+        fill: $color-ocean-blue-50;
+        &alt {
+          stroke: $color-ocean-blue-50;
+        }
+      }
+    }
   }
 }

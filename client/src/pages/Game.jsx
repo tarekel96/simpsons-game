@@ -2,9 +2,10 @@
 import React, { Component } from "react";
 // import components
 import Thumbnail from "../components/Thumbnail/index.js";
-import Container from "../components/Container/index.js";
+//import Container from "../components/Container/index.js";
 import ModalCom from "../components/Modal/index.js";
 import Footer from "../components/Footer/index.js";
+//import { Grid, GridItem } from "../components/Grid";
 // import styles
 import styles from "../styles/Game.module.scss";
 
@@ -176,18 +177,18 @@ class Game extends Component {
   render() {
     return (
       <div className={styles.game}>
-        <header className="App-header text-warning pt-4 d-block">
+        <header className="App-header pt-4 d-block">
           <h1 className="text-center">The Simpsons Game</h1>
         </header>
-        <section className="text-warning text-right pr-5">
+        <section className={` ${styles["scoreSection"]}`}>
           <h2>Score: {this.state.score}</h2>
           <h2>Topscore: {this.state.topScore}</h2>
         </section>
-        <Container bootstrap="text-warning d-flex row justify-content-center mt-3 container mx-auto pb-4">
+        {/* <Container bootstrap=" d-flex row justify-content-center mt-3 container mx-auto pb-4"> */}
+        <div className={styles["gameGrid"]}>
           {this.randomizeOrder(this.state.array).map((character) => (
             <Thumbnail
-              bootstrap="pt-4 px-4"
-              customStyles={styles.fade}
+              customStyles={`${styles["fade"]} ${styles["gameGridItem"]}`}
               key={character.id}
               id={character.id}
               imageSrc={character.hash}
@@ -203,8 +204,9 @@ class Game extends Component {
             topScore={this.state.topScore}
             closeModal={this.closeModal}
           />
-        </Container>
-        <Footer bootstrap="pl-5 pb-3 text-warning" />
+        </div>
+        {/* </Container> */}
+        <Footer bootstrap="pl-5 pb-3 " />
       </div>
     );
   }
