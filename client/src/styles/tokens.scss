@@ -1,39 +1,39 @@
 // Acme Google font
 @import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
-
-$font: "Acme", sans-serif;
+/********************* FONT *********************/
+$font-family: "Acme", sans-serif;
 $font-size-m: 1rem;
-$large: 1.4rem;
-$pure-white: #ffffff;
-$soft-blue: #6495ed;
-$blacked-out: #111111;
-$shadow-orange: #c06502;
-$limerock-orange: #ff851b;
-$golden: rgb(236, 186, 59);
-/** colors **/
-$caribbean-aqua: #00abbd;
+$font-size-l: 1.4rem;
+/********************* COLOR *********************/
+$color-pure-white: #ffffff;
+$color-soft-blue: #6495ed;
+$color-blacked-out: #111111;
+$color-shadow-orange: #c06502;
+$color-limerock-orange: #ff851b;
+$color-golden-orange: rgb(236, 186, 59);
+$color-aqua: #00abbd;
 $coral-red-danger: #b30000;
-$deep-fishing-blue: #002d72;
-$fiji-blue: #80caf0;
-$fin-grey: #e5e5e5;
-$nemo-orange: #f68838;
-$nude-beach: #f6e1cf;
-$ocean-blue: #081844;
-$pearl-white: #ffffff;
-$sea-foam-white: rgba(255, 255, 255, 0.7);
-$sea-glass-aqua: #00c7c8;
-$seahorse-yellow: #fff199;
-$seal-grey: #8b8b8f;
-$shark-grey: #1f1f1f;
-$starfish-orange: #f8a055;
-$stingray-grey: #aaabae;
-$swordfish-grey: #c37e7e;
-$tang-yellow: #ffdc00;
-$tide-pool-blue: #e5eaf1;
-$undertow-blue: #b1e5ff;
-$whale-grey: #505961;
-$subscribe-hover: rgba(39, 255, 40, 0.4);
-$subscribe-click: rgba(4, 135, 255, 0.4);
+$color-deep-blue: #002d72;
+$color-fiji-blue: #80caf0;
+$color-fin-grey: #e5e5e5;
+$color-nemo-orange: #f68838;
+$color-nude-beach: #f6e1cf;
+$color-ocean-blue: #081844;
+$color-pearl-white: #ffffff;
+$color-sea-foam-white: rgba(255, 255, 255, 0.7);
+$color-sea-glass-aqua: #00c7c8;
+$color-seahorse-yellow: #fff199;
+$color-seal-grey: #8b8b8f;
+$color-shark-grey: #1f1f1f;
+$color-starfish-orange: #f8a055;
+$color-stingray-grey: #aaabae;
+$color-swordfish-grey: #c37e7e;
+$color-tang-yellow: #ffdc00;
+$color-tide-pool-blue: #e5eaf1;
+$color-undertow-blue: #b1e5ff;
+$color-whale-grey: #505961;
+$color-subscribe-hover: rgba(39, 255, 40, 0.4);
+$color-subscribe-click: rgba(4, 135, 255, 0.4);
 $color-caribbean-aqua: #00abbd;
 $color-caribbean-aqua-25: #bfeaee;
 $color-caribbean-aqua-50: #80d5de;
@@ -70,13 +70,11 @@ $color-whale-grey: #505961;
 $color-whale-grey-25: #d3d5d7;
 $color-whale-grey-50: #a7acb0;
 $color-whale-grey-75: #7c8288;
-
-// breakpoints
+/********************* BREAKPOINTS *********************/
 $lg-breakpoint-end: 1280px;
 $md-breakpoint-end: 839px;
 $sm-breakpoint-end: 599px;
-
-// spacing
+/********************* SPACING *********************/
 $spacing-xxs: 0.5rem;
 $spacing-xs: 0.75rem;
 $spacing-s: 1rem;

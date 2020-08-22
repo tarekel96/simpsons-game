@@ -28,7 +28,7 @@
 }
 .primaryBtnTextColor,
 .primaryBtnTextColorDisabled {
-  color: $pure-white;
+  color: $color-pure-white;
 }
 .textBtnTextColor,
 .outlinedBtnTextColor {
@@ -43,7 +43,7 @@
 .danger,
 .ddanger {
   background-color: $color-coral-red;
-  color: $pure-white;
+  color: $color-pure-white;
   border: none;
 }
 
@@ -79,20 +79,20 @@ Transition Colors - the color scheme state triggered from an event (hover or cli
 */
 %primaryColorScheme {
   background-color: $color-ocean-blue;
-  color: $pure-white;
+  color: $color-pure-white;
 }
 %primaryTransitionColors {
   background-color: $color-ocean-blue-75;
-  color: $pure-white;
+  color: $color-pure-white;
   border: none;
 }
 %primaryEventColors {
   background-color: $color-ocean-blue-50;
-  color: $pure-white;
+  color: $color-pure-white;
   border: none;
 }
 %outlinedColorScheme {
-  background-color: $pure-white;
+  background-color: $color-pure-white;
   color: $color-shark-grey;
   border: 2px solid $color-shark-grey;
 }
@@ -107,7 +107,7 @@ Transition Colors - the color scheme state triggered from an event (hover or cli
   border: 2px solid $color-shark-grey;
 }
 %textColorScheme {
-  background-color: $pure-white;
+  background-color: $color-pure-white;
   color: $color-shark-grey;
 }
 %textTransitionColors {
@@ -120,7 +120,7 @@ Transition Colors - the color scheme state triggered from an event (hover or cli
 }
 // transition color scheme state for Text with Link variant
 %textTransitionLink {
-  background-color: $pure-white;
+  background-color: $color-pure-white;
   text-decoration: underline;
 }
 
@@ -136,7 +136,7 @@ Transition Colors - the color scheme state triggered from an event (hover or cli
   }
   &:disabled {
     background-color: $color-stingray-grey;
-    color: $pure-white;
+    color: $color-pure-white;
   }
   &disabled:hover,
   &disabledclicked:hover {
@@ -154,7 +154,7 @@ Transition Colors - the color scheme state triggered from an event (hover or cli
     @extend %outlinedEventColors;
   }
   &:disabled {
-    background-color: $pure-white;
+    background-color: $color-pure-white;
     color: $color-stingray-grey;
     border: 2px solid $color-stingray-grey;
   }
@@ -204,7 +204,7 @@ Transition Colors - the color scheme state triggered from an event (hover or cli
     border: none;
   }
   &:disabled {
-    background-color: $pure-white;
+    background-color: $color-pure-white;
     color: $color-stingray-grey;
     border: none;
     &:hover {
@@ -223,7 +223,7 @@ Transition Colors - the color scheme state triggered from an event (hover or cli
     }
   }
   &icon:disabled {
-    background-color: $pure-white;
+    background-color: $color-pure-white;
     color: $color-stingray-grey;
     border: none;
     &:hover {
@@ -237,7 +237,7 @@ Transition Colors - the color scheme state triggered from an event (hover or cli
   &disabledicon,
   &disabledclicked,
   &disablediconclicked {
-    color: $pure-white;
+    color: $color-pure-white;
     background-color: $color-stingray-grey;
     border: none;
     .iconleft {
@@ -277,45 +277,45 @@ Transition Colors
 */
 /***** INHERITANCE (DARK MODE) *****/
 %darkPrimaryColorScheme {
-  background-color: $pure-white;
-  color: $deep-fishing-blue;
-  border: 2px solid $pure-white;
+  background-color: $color-pure-white;
+  color: $color-deep-blue;
+  border: 2px solid $color-pure-white;
   border-radius: 4px;
 }
 %darkPrimaryTransition {
-  background-color: $tide-pool-blue;
-  color: $deep-fishing-blue;
-  border: 2px solid $deep-fishing-blue;
+  background-color: $color-tide-pool-blue;
+  color: $color-deep-blue;
+  border: 2px solid $color-deep-blue;
   border-radius: 4px;
 }
 %darkSecondaryColorScheme {
-  background-color: $ocean-blue;
-  color: $pure-white;
-  border: 2px solid $pure-white;
+  background-color: $color-ocean-blue;
+  color: $color-pure-white;
+  border: 2px solid $color-pure-white;
 }
 %darkSecondaryTransition {
   background-color: #465273;
-  color: $pure-white;
-  border: 2px solid $pure-white;
+  color: $color-pure-white;
+  border: 2px solid $color-pure-white;
   border-radius: 4px;
 }
 %darkTextColorScheme {
-  background-color: $ocean-blue;
-  color: $pure-white;
+  background-color: $color-ocean-blue;
+  color: $color-pure-white;
   border: none;
 }
 %darkTextTransitionHover {
   background-color: #465273;
-  color: $pure-white;
+  color: $color-pure-white;
   border: none;
 }
 %darkTextTransitionClicked {
   background-color: #465273;
-  color: $pure-white;
+  color: $color-pure-white;
 }
 %darkTextLinkColorScheme {
-  background-color: $ocean-blue;
-  color: $pure-white;
+  background-color: $color-ocean-blue;
+  color: $color-pure-white;
   border: none;
 }
 %darkTextLinkTransitionHover {
@@ -323,8 +323,8 @@ Transition Colors
   text-decoration: underline;
 }
 %darkTextLinkTransitionClicked {
-  background-color: $ocean-blue;
-  color: $pure-white;
+  background-color: $color-ocean-blue;
+  color: $color-pure-white;
   text-decoration: underline;
   border: none;
 }
@@ -340,7 +340,7 @@ Transition Colors
   // PRIMARY BUTTON DISABLED - (DARK MODE)
   &disabled,
   &disabledclicked {
-    background-color: $fin-grey;
+    background-color: $color-fin-grey;
     color: $color-stingray-grey;
   }
   &disabled:hover,
@@ -359,9 +359,9 @@ Transition Colors
   /***** SECONDARY BUTTON DISABLED - (DARK MODE) *****/
   &disabled,
   &disabledclicked {
-    color: $seal-grey;
-    border: 2px solid $seal-grey;
-    background-color: $ocean-blue;
+    color: $color-seal-grey;
+    border: 2px solid $color-seal-grey;
+    background-color: $color-ocean-blue;
   }
   &disabled:hover,
   &disabledclicked:hover {
@@ -462,8 +462,8 @@ Transition Colors
   /***** TEXT DISABLED BUTTON (DARK MODE) *****/
   &disabled,
   &disabledclicked {
-    color: $seal-grey;
-    background-color: $ocean-blue;
+    color: $color-seal-grey;
+    background-color: $color-ocean-blue;
     border: none;
     .iconleft {
       @extend %leftIconSpacing;
