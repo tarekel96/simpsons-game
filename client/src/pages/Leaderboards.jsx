@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/api";
 import Scorepost from "../components/Scorepost";
 import Container from "../components/Container";
+import Loading from "../components/Loading";
 import styles from "../styles/Leaderboards.module.scss";
 
 const Leaderboards = () => {
@@ -15,16 +16,18 @@ const Leaderboards = () => {
       });
   }, []);
   console.log(userScores);
-  return (
-    <Container className={`${styles["leaderboardContainer"]}`}>
-      <h3
-        style={{ textAlign: "center" }}
-        className={`${styles["leaderboardTitle"]}`}
-      >
-        LEADERBOARDS
-      </h3>
-      {userScores !== [] ? (
-        userScores.map((entry) => {
+
+  if (userScores.length === 0) return <Loading />;
+  else {
+    return (
+      <Container className={`${styles["leaderboardContainer"]}`}>
+        <h3
+          style={{ textAlign: "center" }}
+          className={`${styles["leaderboardTitle"]}`}
+        >
+          LEADERBOARDS
+        </h3>
+        {userScores.map((entry) => {
           return (
             <Scorepost
               name={entry.Name}
@@ -32,12 +35,10 @@ const Leaderboards = () => {
               key={entry.UserScoreId}
             />
           );
-        })
-      ) : (
-        <h2>LOADING...</h2>
-      )}
-    </Container>
-  );
+        })}
+      </Container>
+    );
+  }
 };
 
 export default Leaderboards;

@@ -4,21 +4,14 @@ import { Link } from "react-router-dom";
 // import components
 import Container from "../components/Container/Container";
 import { Button } from "../components/Button/Button";
-import LightBox from "../components/Lightbox";
 // import styles
 import styles from "../styles/Menu.module.scss";
 
 const Main = ({ audio, playAudio, stopAudio }) => {
   const [settings, toggleSettings] = useState(false);
-  const [modal, toggle] = useState(false);
-  const toggleModal = () => {
-    toggle((state) => !state);
-  };
   return (
     <Container customStyles={styles.main} className={`${styles[`main`]}`}>
       <h1 className={styles.header}>WELCOME TO THE SIMPSONS's MEMORY GAME</h1>
-      <Button onClick={toggleModal}>Modal</Button>
-      <LightBox modal={modal} toggleModal={toggleModal} />
       <section className={styles.options}>
         <p>
           <Link
@@ -59,12 +52,12 @@ const Main = ({ audio, playAudio, stopAudio }) => {
 
 const Settings = ({ playAudio, stopAudio }) => {
   return (
-    <section>
+    <section className={styles["settingsContainer"]}>
       Audio:
       <br />
       <span>
         <Button
-          className={styles["menuBtn"]}
+          className={`${styles["menuBtn"]}`}
           onClick={(audio) => {
             playAudio(audio);
           }}
@@ -74,7 +67,7 @@ const Settings = ({ playAudio, stopAudio }) => {
       </span>
       <span>
         <Button
-          className={styles["menuBtn"]}
+          className={`${styles["menuBtn"]}`}
           onClick={(audio) => {
             stopAudio(audio);
           }}

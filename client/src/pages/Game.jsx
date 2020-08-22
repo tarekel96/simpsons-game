@@ -5,8 +5,6 @@ import Thumbnail from "../components/Thumbnail/index.js";
 //import Container from "../components/Container/index.js";
 import ModalCom from "../components/Modal/index.js";
 import Footer from "../components/Footer/index.js";
-//import { Grid, GridItem } from "../components/Grid";
-// import styles
 import styles from "../styles/Game.module.scss";
 
 // doh sound effect
@@ -184,7 +182,6 @@ class Game extends Component {
           <h2>Score: {this.state.score}</h2>
           <h2>Topscore: {this.state.topScore}</h2>
         </section>
-        {/* <Container bootstrap=" d-flex row justify-content-center mt-3 container mx-auto pb-4"> */}
         <div className={styles["gameGrid"]}>
           {this.randomizeOrder(this.state.array).map((character) => (
             <Thumbnail
@@ -205,7 +202,6 @@ class Game extends Component {
             closeModal={this.closeModal}
           />
         </div>
-        {/* </Container> */}
         <Footer bootstrap="pl-5 pb-3 " />
       </div>
     );

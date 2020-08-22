@@ -77,7 +77,7 @@ export const Form = ({ topScore }) => {
   const [entry, setEntry] = useState({ name: "" });
   const [score, setScore] = useState(0);
   const [form, updateForm] = useState({ submitting: true, message: "" });
-  const [empty, isEmpty] = useState(true);
+  const [empty, isEmpty] = useState(false);
   const [isProfane, setProfane] = useState(false);
 
   useEffect(() => {
@@ -96,7 +96,7 @@ export const Form = ({ topScore }) => {
         >
           Heck Yeah!
         </Button>
-        {proceedWithForm ? (
+        {proceedWithForm && (
           <form className={styles.scoreForm} onSubmit={handleSubmit}>
             <p>Enter your name:</p>
             <div className={`${styles["messageAndInputContainer"]}`}>
@@ -110,7 +110,6 @@ export const Form = ({ topScore }) => {
                   name="name"
                   onChange={handleChange}
                   onBlur={checkChange}
-                  onFocus={checkChange}
                 />
                 <Button
                   className={`${styles["submitButton"]}`}
@@ -121,7 +120,7 @@ export const Form = ({ topScore }) => {
               </div>
             </div>
           </form>
-        ) : null}
+        )}
       </>
     );
   }
@@ -138,17 +137,14 @@ const ErrorMessage = ({ errorType = null }) => {
               ERROR: Please fill out the form input before submitting.
             </p>
           );
-          break;
         case "profane":
           return (
             <p className={`${styles["errorMessage"]}`}>
               ERROR: Your input contains profane or innappropriate language.
             </p>
           );
-          break;
         default:
           return <p className={`${styles["errorMessage"]}`}>ERROR</p>;
-          break;
       }
     };
 

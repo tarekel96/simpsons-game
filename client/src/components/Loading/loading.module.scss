@@ -1,3 +1,5 @@
+@import "../../styles/tokens.scss";
+
 .loadingContainer {
   position: fixed; // makes sure the user cannot scroll when the modal is open (except for inside the modal)
   top: 0;
@@ -5,7 +7,8 @@
   z-index: 1040;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: $color-tang-yellow-75;
+  //background-color: rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   justify-content: center;
