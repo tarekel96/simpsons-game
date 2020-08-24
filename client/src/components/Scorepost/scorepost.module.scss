@@ -25,3 +25,15 @@
     border: none;
   }
 }
+
+@media (min-width: $sm-breakpoint-end) and (max-width: 900px) {
+  .scorepost {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: $sm-breakpoint-end) {
+  .scorepost {
+    max-width: 300px;
+  }
+}
