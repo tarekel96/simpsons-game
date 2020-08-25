@@ -63,7 +63,7 @@
 @keyframes fadeIn {
   0% {
     opacity: 0;
-    margin-top: 5rem;
+    margin-top: 10rem;
   }
   100% {
     opacity: 1;
@@ -73,10 +73,11 @@
 
 .fade {
   animation-name: fadeIn;
-  -webkit-animation-duration: 1.5s;
-  animation-duration: 1.5s;
+  -webkit-animation-duration: 1.2s;
+  animation-duration: 1.2s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+  animation-timing-function: ease-out;
 }
 
 .fade-enter {

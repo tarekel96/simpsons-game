@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Menu from "./pages/Menu.jsx";
 import Loading from "./components/Loading";
 import Leaderboards from "./pages/Leaderboards";
+import Trivia from "./pages/Trivia";
 import NotFound from "./pages/NotFound.jsx";
 import "./App.scss";
 
@@ -47,6 +48,9 @@ const App = (props) => {
           </Route>
           <Route exact path="/leaderboards">
             <Leaderboards userScores={userScores} />
+          </Route>
+          <Route exact path="/trivia">
+            <Trivia />
           </Route>
           <Route path="/loading" component={Loading} />
           <Route path="*" component={NotFound} />

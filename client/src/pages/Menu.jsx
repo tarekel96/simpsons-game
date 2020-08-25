@@ -10,7 +10,7 @@ import styles from "../styles/Menu.module.scss";
 const Main = ({ audio, playAudio, stopAudio }) => {
   const [settings, toggleSettings] = useState(false);
   return (
-    <Container customStyles={styles.main} className={`${styles[`main`]}`}>
+    <Container className={`${styles[`main`]}`}>
       <h1 className={styles.header}>WELCOME TO THE SIMPSONS's MEMORY GAME</h1>
       <section className={styles.options}>
         <p>
@@ -45,6 +45,15 @@ const Main = ({ audio, playAudio, stopAudio }) => {
         {settings ? (
           <Settings audio={audio} playAudio={playAudio} stopAudio={stopAudio} />
         ) : null}
+        <p>
+          <Link
+            to="/trivia"
+            className={styles.link}
+            style={{ textDecoration: "none" }}
+          >
+            <Button className={styles["menuBtn"]}>Trivia</Button>
+          </Link>
+        </p>
       </section>
     </Container>
   );

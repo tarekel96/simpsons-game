@@ -1,0 +1,87 @@
+@import "../styles/tokens.scss";
+
+%text {
+  font-family: $font-family;
+  color: $color-ocean-blue;
+  text-align: center;
+}
+
+.triviaContainer {
+  @extend %text;
+  height: 100vh;
+  background-image: url("../styles/images/springfield-night.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // .triviaCardContainer {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   padding: 64px 32px;
+  //   width: 400px;
+  //   height: 560px;
+  //   border-radius: 8px;
+  //   background-color: $color-seahorse-yellow;
+  //   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 0px 4px rgba(0, 0, 0, 0.25);
+  //   margin-bottom: 2rem;
+  //   h1 {
+  //     margin: 32px auto;
+  //     height: 33%;
+  //     display: flex;
+  //     align-items: flex-end;
+  //   }
+  //   p {
+  //     font-size: $font-size-l;
+  //     text-align: center;
+  //     height: 66%;
+  //     display: flex;
+  //     align-items: flex-start;
+  //     margin-bottom: 0;
+  //   }
+  //   article {
+  //     font-style: italic;
+  //   }
+  // }
+  // .triviaCardFlippedState {
+  //   padding: 0;
+  //   width: 400px;
+  //   height: 560px;
+  //   border-radius: 8px;
+  //   background-color: $color-seahorse-yellow;
+  //   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 0px 4px rgba(0, 0, 0, 0.25);
+  //   margin-bottom: 2rem;
+  //   padding: 1rem 1rem 0 1rem;
+  //   img {
+  //     max-height: 500px;
+  //     height: auto;
+  //     width: 100%;
+  //   }
+  //   h3 {
+  //     display: flex;
+  //     height: 44px;
+  //     justify-content: center;
+  //     align-items: center;
+  //     text-align: center;
+  //   }
+  // }
+}
+
+.animation {
+  animation: slideIn;
+  animation-duration: 2s;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
