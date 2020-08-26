@@ -11,6 +11,8 @@ const router = require("./api");
 
 // parses data into JSON
 app.use(express.json());
+
+// Connect to MySQL
 const DB_CONNECTION = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_ADMIN,
@@ -18,22 +20,11 @@ const DB_CONNECTION = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-// connect to MySQL DB
-// DB_CONNECTION.connect((err) => {
-//   if (err) throw err;
-//   console.log("Connected to MySQL Database");
-//   DB_CONNECTION.query("SELECT * FROM simpsonsGameDB.UserScore", function (
-//     err,
-//     result,
-//     fields
-//   ) {
-//     if (err) throw err;
-//     app.get("/userscore", (req, res) => {
-//       res.json({ userScores: result });
-//     });
-//   });
-// });
+// if(process.env.NODE_ENV === "production"){
 
+// }
+
+// Routes
 app.use("/api", router);
 
 app.listen(PORT, () => {
