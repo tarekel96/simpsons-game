@@ -20,9 +20,9 @@ const DB_CONNECTION = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-// if(process.env.NODE_ENV === "production"){
-
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Routes
 app.use("/api", router);
