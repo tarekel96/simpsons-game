@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && yarn run build",
     "install-client": "cd client && yarn",
-    "heroku-postbuild": "yarn -client && yarn run build",
+    "heroku-postbuild": "npm run install-client && yarn run build",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "cd client && yarn start",
