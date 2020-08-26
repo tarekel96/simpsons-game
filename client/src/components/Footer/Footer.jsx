@@ -1,10 +1,10 @@
 import React from "react";
-
-const Footer = ({ bootstrap }) => {
+import styles from "./footer.module.scss";
+const Footer = ({ className = "" }) => {
   return (
     <>
-      <footer>
-        <h4 className={bootstrap}>Designed by Tarek El-Hajjaoui</h4>
+      <footer className={`${styles["footer"]} ${className}`}>
+        <h4>Designed by Tarek El-Hajjaoui</h4>
       </footer>
     </>
   );

@@ -9,6 +9,7 @@ import styles from "../styles/Menu.module.scss";
 
 const Main = ({ audio, playAudio, stopAudio }) => {
   const [settings, toggleSettings] = useState(false);
+
   return (
     <Container className={`${styles[`main`]}`}>
       <h1 className={styles.header}>WELCOME TO THE SIMPSONS's MEMORY GAME</h1>
@@ -35,7 +36,7 @@ const Main = ({ audio, playAudio, stopAudio }) => {
           <Button
             className={styles["menuBtn"]}
             onClick={() => {
-              toggleSettings(!settings);
+              toggleSettings((state) => !state);
             }}
             customStyles={styles.menuBtn}
           >
@@ -59,9 +60,9 @@ const Main = ({ audio, playAudio, stopAudio }) => {
   );
 };
 
-const Settings = ({ playAudio, stopAudio }) => {
+const Settings = ({ className = "", playAudio, stopAudio }) => {
   return (
-    <section className={styles["settingsContainer"]}>
+    <section className={`${styles["settingsContainer"]} ${className}`}>
       Audio:
       <br />
       <span>

@@ -2,14 +2,21 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import styles from "./card.module.scss";
 
-export const TriviaCard = ({ character, image, style, quote }) => {
-  const [clicked, setClick] = React.useState(false);
-  const { transform, opacity } = useSpring({
+export const TriviaCard = ({
+  className = "",
+  clicked,
+  character,
+  handleClick,
+  image,
+  quote,
+}) => {
+  // const [clicked, setClick] = React.useState(false);
+  const { transform } = useSpring({
     transform: `perspective(600px) rotateX(${clicked ? 180 : 0}deg)`,
     config: { mass: 5, tension: 500, friction: 80 },
   });
   return (
-    <div className={`${styles["animation"]}`}>
+    <div className={className}>
       {clicked ? (
         <animated.section
           style={{
@@ -20,22 +27,20 @@ export const TriviaCard = ({ character, image, style, quote }) => {
               ? styles["triviaCardFlippedState"]
               : styles["triviaCardContainer"]
           }`}
-          onClick={() => setClick((state) => !state)}
+          onClick={handleClick}
         >
           <img src={image} alt={`${character}`} />
           <h3>{character}</h3>
         </animated.section>
       ) : (
         <animated.section
-          style={{
-            transform: transform.interpolate((t) => `${t} rotateX(0deg)`),
-          }}
+          style={{ transform }}
           className={` ${
             clicked
               ? styles["triviaCardFlippedState"]
               : styles["triviaCardContainer"]
           }`}
-          onClick={() => setClick((state) => !state)}
+          onClick={handleClick}
         >
           <h1>Quote: </h1>
           <p>{quote}</p>

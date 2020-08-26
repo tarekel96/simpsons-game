@@ -1,10 +1,10 @@
 // import packages
 import React, { Component } from "react";
 // import components
+import Container from "../components/Container";
 import Thumbnail from "../components/Thumbnail/index.js";
-//import Container from "../components/Container/index.js";
 import ModalCom from "../components/Modal/index.js";
-import Footer from "../components/Footer/index.js";
+// import styles
 import styles from "../styles/Game.module.scss";
 
 // doh sound effect
@@ -174,7 +174,7 @@ class Game extends Component {
 
   render() {
     return (
-      <div className={styles.game}>
+      <Container className={styles.game}>
         <header className="App-header pt-4 d-block">
           <h1 className="text-center">The Simpsons Game</h1>
         </header>
@@ -202,8 +202,7 @@ class Game extends Component {
             closeModal={this.closeModal}
           />
         </div>
-        <Footer bootstrap="pl-5 pb-3 " />
-      </div>
+      </Container>
     );
   }
 }
