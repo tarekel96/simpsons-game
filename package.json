@@ -1,6 +1,9 @@
 {
   "name": "simpsons-game",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.8.0"
+  },
   "description": "simpsons game with React on front end and NodeJS Express and SQL in the backend",
   "main": "server.js",
   "scripts": {
