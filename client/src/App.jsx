@@ -34,7 +34,7 @@ const App = (props) => {
       .catch((err) => {
         throw err;
       });
-  }, []);
+  }, [userScores, setScores]);
 
   return (
     <div>
