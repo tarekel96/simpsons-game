@@ -20,6 +20,21 @@
 }
 
 .thumbnail:hover {
-  transform: scale(1.3);
   cursor: pointer;
+  animation: scaleAndSlideUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.thumbnailContainer:hover {
+  background-color: $color-tang-yellow;
+}
+
+@keyframes scaleAndSlideUp {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-1rem) scale(1.3);
+  }
 }
