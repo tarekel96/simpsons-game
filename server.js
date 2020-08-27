@@ -8,6 +8,7 @@ const app = express();
 app.use(cors());
 const PORT = 5000 || process.env.PORT;
 const router = require("./api");
+const path = require("path");
 
 // parses data into JSON
 app.use(express.json());
@@ -20,8 +21,14 @@ const DB_CONNECTION = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
+// serve static assets if on production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+
+  // index.html for all page routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(___dirname, "../client", "build", "index.html"));
+  });
 }
 
 // Routes
