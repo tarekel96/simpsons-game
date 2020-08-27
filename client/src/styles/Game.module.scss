@@ -63,13 +63,11 @@
 @keyframes fadeIn {
   0% {
     opacity: 0;
-    // margin-top: 20rem;
-    transform: translateY(100%);
+    margin-top: 20rem;
   }
   100% {
     opacity: 1;
-    // margin-top: 0;
-    transform: translateY(0%);
+    margin-top: 0;
   }
 }
 
