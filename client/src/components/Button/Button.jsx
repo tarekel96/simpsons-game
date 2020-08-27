@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //import components
 import Icon from "../Icon/index";
 // import style module
-import styles from "./button.module.scss";
+import styles from "./Button.module.scss";
 
 const VARIANTS = [
   "primary",
