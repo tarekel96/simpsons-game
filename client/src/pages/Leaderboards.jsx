@@ -22,6 +22,7 @@ const Leaderboards = () => {
     scores
       .then((scores) => setScores(scores))
       .catch((err) => {
+        console.log(err);
         throw err;
       });
   }, []);
@@ -56,6 +57,7 @@ const Leaderboards = () => {
 
   if (userScores.length === 0) return <Loading />;
   else {
+    console.log(userScores);
     return (
       <Container className={`${styles["leaderboardContainer"]}`}>
         <div className={`${styles["leaderboardMenuAndTitle"]}`}>
