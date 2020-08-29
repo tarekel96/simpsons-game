@@ -6,6 +6,14 @@ const DB_CONNECTION = mysql.createConnection({
   password: process.env.DB_PASSWORD,
 });
 
+DB_CONNECTION.connect((err) => {
+  if (err) {
+    console.log("Error Connecting to DB");
+    throw err;
+  }
+  console.log("Connected!");
+});
+
 let DB = {};
 
 DB.all = () => {
