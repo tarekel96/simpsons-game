@@ -20,7 +20,6 @@ const Trivia = () => {
     const results = await axios.get(
       "https://thesimpsonsquoteapi.glitch.me/quotes"
     );
-    console.log(results.data[0]);
     setQuote(results.data[0]);
   };
   React.useEffect(() => {
