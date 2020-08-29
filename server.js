@@ -6,7 +6,7 @@ const cors = require("cors");
 const mysql = require("mysql");
 const app = express();
 app.use(cors());
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 const router = require("./api");
 const path = require("path");
 
