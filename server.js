@@ -12,6 +12,7 @@ const path = require("path");
 
 // parses data into JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Connect to MySQL
 const DB_CONNECTION = mysql.createConnection({
