@@ -53,6 +53,7 @@ export const Button = ({
   cols = 2,
   disabled = false,
   onClick,
+  disabledClick = false,
 }) => {
   // ensures that class name is always lowercase like the class defined in scss
   variant = variant.toLowerCase();
@@ -88,10 +89,13 @@ export const Button = ({
        ${styles["btn"]} ${styles[variant]} ${styles[size]} ${className}
   `}
       onClick={() => {
-        setClick((state) => !state);
         if (onClick) {
           onClick();
         }
+        if (disabledClick) {
+          return;
+        }
+        setClick((state) => !state);
       }}
       size={size}
       disabled={disabled}

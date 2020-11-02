@@ -61,14 +61,21 @@ const Main = ({ audio, playAudio, stopAudio }) => {
 };
 
 const Settings = ({ className = "", playAudio, stopAudio }) => {
+  const [active, setActive] = React.useState(false);
   return (
     <section className={`${styles["settingsContainer"]} ${className}`}>
       Audio:
       <br />
       <span>
         <Button
+          variant={active ? "textdisabled" : "primary"}
+          disabledClick
           className={`${styles["menuBtn"]}`}
           onClick={(audio) => {
+            if (active) {
+              return;
+            }
+            setActive((state) => !state);
             playAudio(audio);
           }}
         >
@@ -77,8 +84,14 @@ const Settings = ({ className = "", playAudio, stopAudio }) => {
       </span>
       <span>
         <Button
+          variant={active ? "primary" : "textdisabled"}
           className={`${styles["menuBtn"]}`}
+          disabledClick
           onClick={(audio) => {
+            if (!active) {
+              return;
+            }
+            setActive((state) => !state);
             stopAudio(audio);
           }}
         >

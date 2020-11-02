@@ -8,10 +8,11 @@ const DB_CONNECTION = mysql.createConnection({
 
 DB_CONNECTION.connect((err) => {
   if (err) {
-    console.log("Error Connecting to DB");
+    console.log("Error: Cannot connect to DB");
     console.log(err);
+  } else {
+    console.log("Connected!");
   }
-  console.log("Connected!");
 });
 
 let DB = {};
